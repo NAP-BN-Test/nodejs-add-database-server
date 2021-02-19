@@ -1,0 +1,2723 @@
+USE [DB_NAME]
+
+
+/****** Object:  Table [dbo].[tblChuyenVanChuyen]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblChuyenVanChuyen](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDHangHoa] [bigint] NULL,
+	[IDDieuPhoi] [bigint] NULL,
+	[EnumDongTraDoor] [int] NULL,
+	[Enumtype] [int] NULL,
+	[MaGiaoNhan] [nvarchar](50) NULL,
+	[StatusTrangThai] [bit] NULL,
+	[EnumHangVanChuyen] [int] NULL,
+	[NgayVanChuyen] [datetime] NULL,
+ CONSTRAINT [PK_tblChuyenVanChuyen] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMAction]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMAction](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NULL,
+	[Description] [nvarchar](100) NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMAction] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMAgent]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMAgent](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDQuocGia] [bigint] NULL,
+	[IDCity] [bigint] NULL,
+	[Code] [nvarchar](50) NULL,
+	[NameVI] [nvarchar](250) NULL,
+	[NameEN] [nvarchar](250) NULL,
+	[AddressVI] [nvarchar](250) NULL,
+	[AddressEN] [nvarchar](250) NULL,
+	[TaxCode] [nchar](10) NULL,
+	[Phone] [nvarchar](150) NULL,
+	[Fax] [nvarchar](150) NULL,
+	[Email] [nvarchar](50) NULL,
+	[Website] [nvarchar](50) NULL,
+	[MaxMoneyDebit] [float] NULL,
+	[Note] [nvarchar](250) NULL,
+	[Rating] [int] NULL,
+	[PaymentPeriod] [int] NULL,
+	[FlagFavorite] [bit] NULL,
+	[IDBank] [bigint] NULL,
+	[BankAccountNumber] [nvarchar](150) NULL,
+	[BankBranchName] [nvarchar](150) NULL,
+	[BankAddress] [nvarchar](150) NULL,
+	[SoDuVND] [float] NULL,
+	[SoDuUSD] [float] NULL,
+ CONSTRAINT [PK_tblDMAgent] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMAirLine]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMAirLine](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[IDQuocGia] [bigint] NULL,
+	[NameVI] [nvarchar](250) NULL,
+	[NameEN] [nvarchar](250) NULL,
+	[AddressVI] [nvarchar](250) NULL,
+	[AddressEN] [nvarchar](250) NULL,
+	[TaxCode] [nvarchar](50) NULL,
+	[Phone] [nvarchar](150) NULL,
+	[Fax] [nvarchar](150) NULL,
+	[Email] [nvarchar](100) NULL,
+	[Website] [nvarchar](100) NULL,
+	[Note] [nvarchar](250) NULL,
+	[MaxMoneyDebit] [float] NULL,
+	[Rating] [int] NULL,
+	[PaymentPeriod] [int] NULL,
+	[FlagFavorite] [bit] NULL,
+	[IDBank] [bigint] NULL,
+	[BankAccountNumber] [nvarchar](150) NULL,
+	[BankBranchName] [nvarchar](150) NULL,
+	[BankAddress] [nvarchar](150) NULL,
+	[SoDuVND] [float] NULL,
+	[SoDuUSD] [float] NULL,
+ CONSTRAINT [PK_tblDMHangSanBay] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMAirLineBranch]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMAirLineBranch](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDAirline] [bigint] NULL,
+	[IDQuocGia] [bigint] NULL,
+	[IDCity] [bigint] NULL,
+	[Code] [nvarchar](50) NULL,
+	[NameVI] [nvarchar](250) NULL,
+	[NameEN] [nvarchar](250) NULL,
+	[AddressVI] [nvarchar](250) NULL,
+	[AddressEN] [nvarchar](250) NULL,
+	[Phone] [nvarchar](150) NULL,
+	[Fax] [nvarchar](150) NULL,
+	[Website] [nvarchar](100) NULL,
+	[Email] [nvarchar](100) NULL,
+	[Note] [nvarchar](250) NULL,
+	[TaxCode] [nvarchar](30) NULL,
+	[MaxMoneyDebit] [float] NULL,
+	[Rating] [int] NULL,
+	[PaymentPeriod] [int] NULL,
+	[FlagFavorite] [bit] NULL,
+	[IDBank] [bigint] NULL,
+	[BankAccountNumber] [nvarchar](150) NULL,
+	[BankBranchName] [nvarchar](150) NULL,
+	[BankAddress] [nvarchar](150) NULL,
+	[SoDuVND] [float] NULL,
+	[SoDuUSD] [float] NULL,
+ CONSTRAINT [PK_tblChiNhanhHangMayBay] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMAirUnit]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMAirUnit](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[NameVI] [nvarchar](50) NULL,
+	[NameEN] [nvarchar](50) NULL,
+	[MinQty] [int] NULL,
+	[HIDE] [bit] NULL,
+	[OrderShow] [int] NULL,
+	[Note] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMKienHangUnit] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMBank]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMBank](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[BankName] [nvarchar](250) NULL,
+	[Manager] [nvarchar](50) NULL,
+	[Logo] [image] NULL,
+	[Address] [nvarchar](250) NULL,
+	[Phone] [nvarchar](50) NULL,
+	[Fax] [nvarchar](50) NULL,
+	[Email] [nvarchar](50) NULL,
+	[Note] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMBank] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMBankAccount]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMBankAccount](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDBank] [bigint] NULL,
+	[BankAccount] [nvarchar](150) NULL,
+	[BankOwner] [nvarchar](150) NULL,
+	[BankName] [nvarchar](150) NULL,
+	[BankBranchName] [nvarchar](150) NULL,
+	[BankAddress] [nvarchar](150) NULL,
+	[SoDuDauKy] [float] NULL,
+	[SoDuCuoiKy] [float] NULL,
+	[FlagFavorite] [bit] NULL,
+	[IDVanPhong] [bigint] NULL,
+	[IDCurrency] [bigint] NULL,
+	[CreateDate] [datetime] NULL,
+ CONSTRAINT [PK_tblDMBankAccount] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMCarrier]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMCarrier](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[IDQuocGia] [bigint] NULL,
+	[NameVI] [nvarchar](250) NULL,
+	[NameEN] [nvarchar](250) NULL,
+	[AddressVI] [nvarchar](250) NULL,
+	[AddressEN] [nvarchar](250) NULL,
+	[TaxCode] [nvarchar](30) NULL,
+	[Phone] [nvarchar](150) NULL,
+	[Fax] [nvarchar](150) NULL,
+	[Email] [nvarchar](100) NULL,
+	[Website] [nvarchar](100) NULL,
+	[Note] [nvarchar](250) NULL,
+	[Rating] [int] NULL,
+	[MaxMoneyDebit] [float] NULL,
+	[PaymentPeriod] [int] NULL,
+	[FlagFavorite] [bit] NULL,
+	[IDBank] [bigint] NULL,
+	[BankAccountNumber] [nvarchar](150) NULL,
+	[BankBranchName] [nvarchar](150) NULL,
+	[BankAddress] [nvarchar](150) NULL,
+	[SoDuVND] [float] NULL,
+	[SoDuUSD] [float] NULL,
+ CONSTRAINT [PK_tblHangTau] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMCarrierBranch]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMCarrierBranch](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[IDCarrier] [bigint] NULL,
+	[IDQuocGia] [bigint] NULL,
+	[IDCity] [bigint] NULL,
+	[NameEN] [nvarchar](250) NULL,
+	[NameVI] [nvarchar](250) NULL,
+	[AddressVI] [nvarchar](250) NULL,
+	[AddressEN] [nvarchar](250) NULL,
+	[Phone] [nvarchar](150) NULL,
+	[Fax] [nvarchar](150) NULL,
+	[Email] [nvarchar](100) NULL,
+	[Website] [nvarchar](100) NULL,
+	[Note] [nvarchar](250) NULL,
+	[TaxCode] [nvarchar](50) NULL,
+	[MaxMoneyDebit] [float] NULL,
+	[Rating] [int] NULL,
+	[PaymentPeriod] [int] NULL,
+	[FlagFavorite] [bit] NULL,
+	[IDBank] [bigint] NULL,
+	[BankAccountNumber] [nvarchar](150) NULL,
+	[BankBranchName] [nvarchar](150) NULL,
+	[BankAddress] [nvarchar](150) NULL,
+	[SoDuVND] [float] NULL,
+	[SoDuUSD] [float] NULL,
+ CONSTRAINT [PK_tblDMChiNhanhHangTau] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMCarrierDeptVessel]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMCarrierDeptVessel](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[BienHieu] [nvarchar](50) NULL,
+	[NameVI] [nvarchar](250) NULL,
+	[NameEN] [nvarchar](250) NULL,
+	[Active] [bit] NULL,
+	[AddressVI] [nvarchar](250) NULL,
+	[AddressEN] [nvarchar](250) NULL,
+	[TaxCode] [nvarchar](30) NULL,
+	[Phone] [nvarchar](150) NULL,
+	[Fax] [nvarchar](150) NULL,
+	[Email] [nvarchar](100) NULL,
+	[Website] [nvarchar](100) NULL,
+	[Note] [nvarchar](250) NULL,
+	[MaxMoneyDebit] [float] NULL,
+	[Rating] [int] NULL,
+	[PaymentPeriod] [int] NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMDeptVessel] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMCharge]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMCharge](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDCurrency] [bigint] NULL,
+	[EnumSeaAir] [int] NULL,
+	[EnumInOutBound] [int] NULL,
+	[Code] [nvarchar](20) NULL,
+	[NameVI] [nvarchar](250) NULL,
+	[NameEN] [nvarchar](250) NULL,
+	[IDDonViTinh] [bigint] NULL,
+	[DependCargo] [bit] NULL,
+	[Rebate] [bit] NULL,
+	[UnitPrice] [float] NULL,
+	[Note] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+	[IDChargeType] [bigint] NULL,
+	[IDTruckUnit] [bigint] NULL,
+	[IDSeaUnit] [bigint] NULL,
+	[IDAirUnit] [bigint] NULL,
+ CONSTRAINT [PK_tblDMChiPhi] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMChargeDependCargoAir]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMChargeDependCargoAir](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDDMCharge] [bigint] NULL,
+	[IDDMUnit] [bigint] NULL,
+	[UnitPrice] [float] NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMDependCargoAir] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMChargeDependCargoLCL]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMChargeDependCargoLCL](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDDMCharge] [bigint] NULL,
+	[IDDMUnit] [bigint] NULL,
+	[UnitPrice] [float] NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMChargeDependCargoLCL] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMChargeDependCargoSea]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMChargeDependCargoSea](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDDMCharge] [bigint] NULL,
+	[IDDMUnit] [bigint] NULL,
+	[UnitPrice] [float] NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMDependCargoSea] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMChargeTemplateDetail]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMChargeTemplateDetail](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDTemplateGroup] [bigint] NULL,
+	[IDDMCharge] [bigint] NULL,
+	[VAT] [float] NULL,
+	[EditDate] [datetime] NULL,
+	[CreateDate] [datetime] NULL,
+	[OnBehalf] [bit] NULL,
+	[FlagFavorite] [bit] NULL,
+	[UnitPrice] [float] NULL,
+	[Quantity] [float] NULL,
+	[Note] [nvarchar](250) NULL,
+	[IDCurrency] [bigint] NULL,
+	[IDDonViTinh] [bigint] NULL,
+	[IDTruckUnit] [bigint] NULL,
+	[IDSeaUnit] [bigint] NULL,
+	[IDAirUnit] [bigint] NULL,
+ CONSTRAINT [PK_tblDMChargeTemplateDetail] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMChargeTemplateGroup]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMChargeTemplateGroup](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[ParentID] [bigint] NULL,
+	[Code] [nvarchar](50) NULL,
+	[GroupName] [nvarchar](250) NULL,
+	[Note] [nvarchar](250) NULL,
+	[EnumSeaAir] [int] NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMChargeTemplateGroup] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMChargeType]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMChargeType](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](20) NULL,
+	[NameVI] [nvarchar](250) NULL,
+	[NameEN] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMChargeType] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMChucVu]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMChucVu](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[NameVI] [nvarchar](250) NULL,
+	[NameEN] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+	[ShowOrder] [int] NULL,
+ CONSTRAINT [PK_EnumChucVu] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMCity]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMCity](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[IDQuocGia] [bigint] NULL,
+	[NameEN] [nvarchar](100) NULL,
+	[NameVI] [nvarchar](100) NULL,
+	[Note] [nchar](10) NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblCity] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMCoLoader]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMCoLoader](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDQuocGia] [bigint] NULL,
+	[IDCity] [bigint] NULL,
+	[Code] [nvarchar](50) NULL,
+	[NameVI] [nvarchar](250) NULL,
+	[NameEN] [nvarchar](250) NULL,
+	[AddressVI] [nvarchar](250) NULL,
+	[AddressEN] [nvarchar](250) NULL,
+	[TaxCode] [nvarchar](50) NULL,
+	[Phone] [nvarchar](150) NULL,
+	[Fax] [nvarchar](150) NULL,
+	[Email] [nvarchar](100) NULL,
+	[Website] [nvarchar](100) NULL,
+	[Note] [nvarchar](250) NULL,
+	[MaxMoneyDebit] [float] NULL,
+	[Rating] [int] NULL,
+	[PaymentPeriod] [int] NULL,
+	[FlagFavorite] [bit] NULL,
+	[IDBank] [bigint] NULL,
+	[BankAccountNumber] [nvarchar](150) NULL,
+	[BankBranchName] [nvarchar](150) NULL,
+	[BankAddress] [nvarchar](150) NULL,
+	[SoDuVND] [float] NULL,
+	[SoDuUSD] [float] NULL,
+ CONSTRAINT [PK_tblDMDonViGomHang] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMCoLoaderMethod]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMCoLoaderMethod](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[NameVI] [nvarchar](50) NULL,
+	[NameEN] [nvarchar](50) NULL,
+	[Note] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_EnumCachThucGomHang] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMContactFun]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMContactFun](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[FunctionalVI] [nvarchar](150) NULL,
+	[FunctionalEN] [nvarchar](150) NULL,
+	[Note] [nvarchar](150) NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMContactFun] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMContactList]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMContactList](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDContactFun] [bigint] NULL,
+	[NameVI] [nvarchar](150) NULL,
+	[NameEN] [nvarchar](150) NULL,
+	[AddressVI] [nvarchar](250) NULL,
+	[AddressEN] [nvarchar](250) NULL,
+	[EnumGioiTinh] [int] NULL,
+	[HandPhone] [nvarchar](50) NULL,
+	[HomePhone] [nvarchar](50) NULL,
+	[Email] [nvarchar](50) NULL,
+	[Note] [nvarchar](250) NULL,
+	[EnumAgentCompanyType] [int] NULL,
+	[IDCustomer] [bigint] NULL,
+	[IDAirline] [bigint] NULL,
+	[IDAirlineBranch] [bigint] NULL,
+	[IDCarrier] [bigint] NULL,
+	[IDCarrierBranch] [bigint] NULL,
+	[IDAgent] [bigint] NULL,
+	[IDCoLoader] [bigint] NULL,
+	[IDPackageSupplier] [bigint] NULL,
+	[IDServiceSupplier] [bigint] NULL,
+	[IDLocalTransporter] [bigint] NULL,
+	[IDDoor] [bigint] NULL,
+	[IDPort] [bigint] NULL,
+	[FlagFavorite] [bit] NULL,
+	[IDBank] [bigint] NULL,
+	[BankAccountNumber] [nvarchar](150) NULL,
+	[BankBranchName] [nvarchar](150) NULL,
+	[BankAddress] [nvarchar](150) NULL,
+	[SoDuVND] [float] NULL,
+	[SoDuUSD] [float] NULL,
+ CONSTRAINT [PK_tblDMNguoiLienHe] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMContractType]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMContractType](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[NameVI] [nvarchar](50) NULL,
+	[NameEN] [nvarchar](50) NULL,
+	[Note] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_EnumHinhThucHopDong] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMCountry]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMCountry](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[NameVI] [nvarchar](50) NULL,
+	[NameEN] [nvarchar](50) NULL,
+	[Note] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblQuocGia] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMCurrency]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMCurrency](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nchar](10) NULL,
+	[NameVI] [nvarchar](50) NULL,
+	[NameEN] [nvarchar](50) NULL,
+	[KyHieu] [nvarchar](10) NULL,
+	[Note] [nvarchar](250) NULL,
+	[IsBasicCurrency] [bit] NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblEnumCurrency] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMCurrencyTyGia]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMCurrencyTyGia](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDCurrency] [bigint] NULL,
+	[NgayThang] [date] NULL,
+	[TyGia] [float] NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMCurrencyTyGia] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMCustomer]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMCustomer](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDQuocGia] [bigint] NULL,
+	[IDCity] [bigint] NULL,
+	[Code] [nvarchar](20) NULL,
+	[NameVI] [nvarchar](250) NULL,
+	[NameEN] [nvarchar](250) NULL,
+	[AddressVI] [nvarchar](250) NULL,
+	[AddressEN] [nvarchar](250) NULL,
+	[TaxCode] [nvarchar](30) NULL,
+	[Phone] [nvarchar](150) NULL,
+	[Fax] [nvarchar](150) NULL,
+	[Email] [nvarchar](100) NULL,
+	[Website] [nvarchar](100) NULL,
+	[Note] [nvarchar](250) NULL,
+	[Rating] [int] NULL,
+	[MaxMoneyDebit] [float] NULL,
+	[PaymentPeriod] [int] NULL,
+	[FlagFavorite] [bit] NULL,
+	[IDBank] [bigint] NULL,
+	[BankAccountNumber] [nvarchar](150) NULL,
+	[BankBranchName] [nvarchar](150) NULL,
+	[BankAddress] [nvarchar](150) NULL,
+	[SoDuVND] [float] NULL,
+	[SoDuUSD] [float] NULL,
+ CONSTRAINT [PK_tblDMKhachHang] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMDonViTinh]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMDonViTinh](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[UnitVI] [nvarchar](150) NULL,
+	[UnitEN] [nvarchar](150) NULL,
+	[FlagFavorite] [bit] NULL,
+	[EnumTruckUnitType] [int] NULL,
+ CONSTRAINT [PK_tblDMChargeUnit] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMDoor]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMDoor](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[EnumTypeOfDoor] [int] NULL,
+	[IDQuocGia] [bigint] NULL,
+	[IDCity] [bigint] NULL,
+	[Code] [nvarchar](50) NULL,
+	[NameVI] [nvarchar](250) NULL,
+	[NameEN] [nvarchar](250) NULL,
+	[AddressVI] [nvarchar](250) NULL,
+	[AddressEN] [nvarchar](250) NULL,
+	[Phone] [nvarchar](100) NULL,
+	[Fax] [nvarchar](100) NULL,
+	[Email] [nvarchar](50) NULL,
+	[Website] [nvarchar](50) NULL,
+	[Rating] [int] NULL,
+	[Note] [nvarchar](250) NULL,
+	[TaxCode] [nvarchar](50) NULL,
+	[MaxMoneyDebit] [float] NULL,
+	[PaymentPeriod] [int] NULL,
+	[FlagFavorite] [bit] NULL,
+	[IDBank] [bigint] NULL,
+	[BankAccountNumber] [nvarchar](150) NULL,
+	[BankBranchName] [nvarchar](150) NULL,
+	[BankAddress] [nvarchar](150) NULL,
+	[SoDuVND] [float] NULL,
+	[SoDuUSD] [float] NULL,
+ CONSTRAINT [PK_Table_1] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMGWMeasUnit]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMGWMeasUnit](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[UnitName] [nvarchar](50) NULL,
+	[Meas] [bit] NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMGWMeasUnit] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMKho]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMKho](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDPort] [bigint] NULL,
+	[Code] [nvarchar](50) NULL,
+	[MaLuuKho] [nvarchar](50) NULL,
+	[NameVI] [nvarchar](150) NULL,
+	[NameEN] [nvarchar](150) NULL,
+	[AddressVI] [nvarchar](150) NULL,
+	[AddressEN] [nvarchar](150) NULL,
+	[Phone] [nvarchar](100) NULL,
+	[Fax] [nvarchar](100) NULL,
+	[Email] [nvarchar](50) NULL,
+	[Website] [nvarchar](50) NULL,
+	[Note] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+	[IDBank] [bigint] NULL,
+	[BankAccountNumber] [nvarchar](150) NULL,
+	[BankBranchName] [nvarchar](150) NULL,
+	[BankAddress] [nvarchar](150) NULL,
+	[SoDuVND] [float] NULL,
+	[SoDuUSD] [float] NULL,
+ CONSTRAINT [PK_tblDMKho] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMLoaiHinhTrans]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMLoaiHinhTrans](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[TenLoaiHinh] [nvarchar](100) NULL,
+	[MaLoaiHinh] [nvarchar](50) NULL,
+	[MoTa] [nvarchar](max) NULL,
+	[GhiChu] [nvarchar](max) NULL,
+	[NgayTao] [date] NULL,
+ CONSTRAINT [PK_tblDMLoaiHinhTrans] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMLoaiMooc]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMLoaiMooc](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[NameVI] [nvarchar](50) NULL,
+	[NameEN] [nvarchar](50) NULL,
+	[Note] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMLoaiMooc] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMLocalTransporterAgent]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMLocalTransporterAgent](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDQuocGia] [bigint] NULL,
+	[IDCity] [bigint] NULL,
+	[Code] [nvarchar](50) NULL,
+	[NameVI] [nvarchar](250) NULL,
+	[NameEN] [nvarchar](250) NULL,
+	[AddressVI] [nvarchar](250) NULL,
+	[AddressEN] [nvarchar](250) NULL,
+	[TaxCode] [nvarchar](30) NULL,
+	[Phone] [nvarchar](150) NULL,
+	[Fax] [nvarchar](150) NULL,
+	[Email] [nvarchar](100) NULL,
+	[Website] [nvarchar](100) NULL,
+	[MaxMoneyDebit] [float] NULL,
+	[Rating] [int] NULL,
+	[Note] [nvarchar](250) NULL,
+	[PaymentPeriod] [int] NULL,
+	[FlagFavorite] [bit] NULL,
+	[IDBank] [bigint] NULL,
+	[BankAccountNumber] [nvarchar](150) NULL,
+	[BankBranchName] [nvarchar](150) NULL,
+	[BankAddress] [nvarchar](150) NULL,
+	[SoDuVND] [float] NULL,
+	[SoDuUSD] [float] NULL,
+ CONSTRAINT [PK_tblDMDonViVanChuyenNoiBo] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMMooc]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMMooc](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[BienSoXE] [nvarchar](50) NULL,
+	[NgayDangKiem] [datetime] NULL,
+	[IDLoaiMooc] [bigint] NULL,
+	[TrongTai] [float] NULL,
+	[HanBaoHiem] [datetime] NULL,
+	[HanDangKiem] [datetime] NULL,
+	[MaGPS] [nvarchar](100) NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMMooc] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMPackageMethod]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMPackageMethod](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[NameVI] [nvarchar](50) NULL,
+	[NameEN] [nvarchar](50) NULL,
+	[Note] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMLoaiDongGoi] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMPackageSupplier]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMPackageSupplier](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDQuocGia] [bigint] NULL,
+	[IDCity] [bigint] NULL,
+	[Code] [nvarchar](50) NULL,
+	[NameVI] [nvarchar](250) NULL,
+	[NameEN] [nvarchar](250) NULL,
+	[AddressVI] [nvarchar](250) NULL,
+	[AddressEN] [nvarchar](250) NULL,
+	[TaxCode] [nvarchar](30) NULL,
+	[Phone] [nvarchar](150) NULL,
+	[Fax] [nvarchar](150) NULL,
+	[Email] [nvarchar](100) NULL,
+	[Website] [nvarchar](100) NULL,
+	[MaxMoneyDebit] [float] NULL,
+	[Rating] [int] NULL,
+	[Note] [nvarchar](250) NULL,
+	[PaymentPeriod] [int] NULL,
+	[FlagFavorite] [bit] NULL,
+	[IDBank] [bigint] NULL,
+	[BankAccountNumber] [nvarchar](150) NULL,
+	[BankBranchName] [nvarchar](150) NULL,
+	[BankAddress] [nvarchar](150) NULL,
+	[SoDuVND] [float] NULL,
+	[SoDuUSD] [float] NULL,
+ CONSTRAINT [PK_tblDMDonViDongGoi] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMPaymentRule]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMPaymentRule](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](20) NULL,
+	[NameVI] [nvarchar](250) NULL,
+	[NameEN] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMDieuKhoanThanhToan] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMPaymentRuleMBL]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMPaymentRuleMBL](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[NameVI] [nvarchar](250) NULL,
+	[NameEN] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMPaymentRuleMBL] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMPaymentTerm]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMPaymentTerm](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](20) NULL,
+	[NameVI] [nvarchar](250) NULL,
+	[NameEN] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMPaymentTerm] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMPhongBan]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMPhongBan](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[ParentID] [bigint] NULL,
+	[NameVI] [nvarchar](150) NULL,
+	[NameEN] [nvarchar](150) NULL,
+	[GhiChu] [nvarchar](150) NULL,
+	[FlagFavorite] [bit] NULL,
+	[IDDMVanPhong] [bigint] NULL,
+ CONSTRAINT [PK_tblDMPhongBan] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMPort]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMPort](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[EnumPortType] [int] NULL,
+	[IDQuocGia] [bigint] NULL,
+	[IDCity] [bigint] NULL,
+	[Code] [nvarchar](50) NULL,
+	[TaxCode] [nvarchar](50) NULL,
+	[NameVI] [nvarchar](50) NULL,
+	[NameEN] [nvarchar](50) NULL,
+	[AddressVI] [nvarchar](250) NULL,
+	[AddressEN] [nvarchar](250) NULL,
+	[Phone] [nvarchar](50) NULL,
+	[Fax] [nvarchar](50) NULL,
+	[Email] [nvarchar](100) NULL,
+	[Website] [nvarchar](100) NULL,
+	[Rating] [int] NULL,
+	[Note] [nvarchar](250) NULL,
+	[MaxMoneyDebit] [float] NULL,
+	[PaymentPeriod] [int] NULL,
+	[FlagFavorite] [bit] NULL,
+	[IDBank] [bigint] NULL,
+	[BankAccountNumber] [nvarchar](150) NULL,
+	[BankBranchName] [nvarchar](150) NULL,
+	[BankAddress] [nvarchar](150) NULL,
+	[SoDuVND] [float] NULL,
+	[SoDuUSD] [float] NULL,
+ CONSTRAINT [PK_tblDMCang] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMSeaUnit]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMSeaUnit](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[NameVI] [nvarchar](50) NULL,
+	[NameEN] [nvarchar](50) NULL,
+	[HIDE] [bit] NULL,
+	[OrderShow] [int] NULL,
+	[Note] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMContainerSeaUnit] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMService]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMService](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](20) NULL,
+	[NameVI] [nvarchar](250) NULL,
+	[NameEN] [nvarchar](250) NULL,
+	[Note] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMDichVu] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMServiceAndSupplier]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMServiceAndSupplier](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDService] [bigint] NULL,
+	[IDServiceSupplier] [bigint] NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMServiceAndSupplier] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMServiceSupplier]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMServiceSupplier](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDQuocGia] [bigint] NULL,
+	[IDCity] [bigint] NULL,
+	[Code] [nvarchar](50) NULL,
+	[NameVI] [nvarchar](250) NULL,
+	[NameEN] [nvarchar](250) NULL,
+	[AddressVI] [nvarchar](250) NULL,
+	[AddressEN] [nvarchar](250) NULL,
+	[TaxCode] [nvarchar](30) NULL,
+	[Phone] [nvarchar](150) NULL,
+	[Fax] [nvarchar](150) NULL,
+	[Email] [nvarchar](100) NULL,
+	[Website] [nvarchar](100) NULL,
+	[MaxMoneyDebit] [float] NULL,
+	[Rating] [int] NULL,
+	[Note] [nvarchar](250) NULL,
+	[PaymentPeriod] [int] NULL,
+	[FlagFavorite] [bit] NULL,
+	[IDBank] [bigint] NULL,
+	[BankAccountNumber] [nvarchar](150) NULL,
+	[BankBranchName] [nvarchar](150) NULL,
+	[BankAddress] [nvarchar](150) NULL,
+	[SoDuVND] [float] NULL,
+	[SoDuUSD] [float] NULL,
+ CONSTRAINT [PK_tblDonVuCungCap] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMStatusBillOfLading]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMStatusBillOfLading](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[NameVI] [nvarchar](50) NULL,
+	[NameEN] [nvarchar](50) NULL,
+	[Note] [nvarchar](250) NULL,
+	[Picture] [image] NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_EnumTinhTrangVanDon] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMStatusJob]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMStatusJob](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[NameVI] [nvarchar](150) NULL,
+	[NameEN] [nvarchar](150) NULL,
+	[Note] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+	[TenMau] [nvarchar](50) NULL,
+	[STTTrangThai] [int] NULL,
+	[EnumLoaiHang] [int] NULL,
+	[G] [int] NULL,
+	[R] [int] NULL,
+	[B] [int] NULL,
+ CONSTRAINT [PK_tblJOBStatus] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMStatusMBL]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMStatusMBL](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[NameVI] [nvarchar](50) NULL,
+	[NameEN] [nvarchar](50) NULL,
+	[Note] [nvarchar](250) NULL,
+	[Picture] [image] NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMStatusMBL] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMTaiXe]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMTaiXe](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[MANHANSU] [nvarchar](10) NULL,
+	[MST] [nvarchar](50) NULL,
+	[HoTenVI] [nvarchar](50) NOT NULL,
+	[HoTenEN] [nvarchar](50) NULL,
+	[NamSinh] [date] NOT NULL,
+	[GioiTinh] [int] NULL,
+	[QueQuan] [nvarchar](250) NULL,
+	[DiaChiThuongTru] [nvarchar](250) NULL,
+	[DiaChiHienTai] [nvarchar](250) NULL,
+	[SoCMT] [nvarchar](50) NULL,
+	[NoiCapCMT] [nvarchar](200) NULL,
+	[NgayCapCMT] [date] NULL,
+	[SoHoChieu] [nvarchar](50) NULL,
+	[NoiCapHoChieu] [nvarchar](200) NULL,
+	[NgayCapHoChieu] [date] NULL,
+	[NgayHetHanHoChieu] [date] NULL,
+	[NgayKyHopDong] [date] NULL,
+	[PictureNV] [image] NULL,
+	[SoTaiKhoanNH] [nvarchar](50) NULL,
+	[DiDong] [nvarchar](20) NULL,
+	[Email] [nvarchar](50) NULL,
+	[SoTruong] [nvarchar](250) NULL,
+	[EnumTinhTrangHonNhan] [int] NULL,
+	[EnumNhomMau] [int] NULL,
+	[ChieuCao] [float] NULL,
+	[CanNang] [float] NULL,
+	[Note] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+	[SoBangLai] [nvarchar](50) NULL,
+	[NgayHetHanBangLai] [datetime] NULL,
+ CONSTRAINT [PK_tblDMTaiXe] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMTerminal]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMTerminal](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDPort] [bigint] NULL,
+	[Code] [nvarchar](50) NULL,
+	[MaLuuKho] [nvarchar](50) NULL,
+	[NameVI] [nvarchar](150) NULL,
+	[NameEN] [nvarchar](150) NULL,
+	[StoragePlace] [nvarchar](150) NULL,
+	[AddressVI] [nvarchar](150) NULL,
+	[AddressEN] [nvarchar](150) NULL,
+	[Phone] [nvarchar](100) NULL,
+	[Fax] [nvarchar](100) NULL,
+	[Email] [nvarchar](50) NULL,
+	[Website] [nvarchar](50) NULL,
+	[Note] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMTerminal] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMToDo]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMToDo](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[ParentID] [bigint] NULL,
+	[IDJObStatus] [bigint] NULL,
+	[EnumToDoTypeOfWork] [int] NULL,
+	[EnumAgentCompanyType] [int] NULL,
+	[NameVI] [nvarchar](150) NULL,
+	[NameEN] [nvarchar](150) NULL,
+	[Note] [nvarchar](max) NULL,
+	[NodeID] [int] NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMToDo] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMToDoTemplate]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMToDoTemplate](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[NameVI] [nvarchar](150) NULL,
+	[NameEN] [nvarchar](150) NULL,
+	[EnumTemplateType] [int] NULL,
+	[Note] [nvarchar](250) NULL,
+	[EnumTypeOfTransport] [int] NULL,
+	[EnumTypeOfTrade] [int] NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMToDoTemplate] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMToDoTemplateDetail]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMToDoTemplateDetail](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[ParentID] [bigint] NULL,
+	[IDToDoTemplate] [bigint] NULL,
+	[IDDMToDo] [bigint] NULL,
+	[NodeID] [int] NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMToDoTemplateDetail] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMTrangThaiVanChuyenTrans]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMTrangThaiVanChuyenTrans](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[TenTrangThai] [nvarchar](50) NULL,
+	[TenMau] [nvarchar](50) NULL,
+	[STTTrangThai] [int] NULL,
+	[EnumLoaiHang] [int] NULL,
+	[GhiChu] [nvarchar](200) NULL,
+	[NgayTao] [date] NULL,
+	[G] [int] NULL,
+	[R] [int] NULL,
+	[B] [int] NULL,
+ CONSTRAINT [PK_tblDMTrangThaiVanChuyenTrans] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMTruckLCLUnit]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMTruckLCLUnit](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[NameVI] [nvarchar](50) NULL,
+	[NameEN] [nvarchar](50) NULL,
+	[MinQty] [int] NULL,
+	[HIDE] [bit] NULL,
+	[OrderShow] [int] NULL,
+	[Note] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMTruckLCLUnit] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMVanPhong]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMVanPhong](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[MST] [nvarchar](50) NULL,
+	[IDKeToanTruong] [bigint] NULL,
+	[Code] [nvarchar](50) NULL,
+	[IDCountry] [bigint] NULL,
+	[IDCity] [bigint] NULL,
+	[NameEN] [nvarchar](250) NULL,
+	[NameVI] [nvarchar](250) NULL,
+	[AddressVI] [nvarchar](250) NULL,
+	[AddressEN] [nvarchar](250) NULL,
+	[Phone] [nvarchar](150) NULL,
+	[Fax] [nvarchar](150) NULL,
+	[Email] [nvarchar](100) NULL,
+	[Website] [nvarchar](100) NULL,
+	[Note] [nvarchar](250) NULL,
+	[TaxCode] [nvarchar](50) NULL,
+	[MaxMoneyDebit] [float] NULL,
+	[Rating] [int] NULL,
+	[PaymentPeriod] [int] NULL,
+	[FlagFavorite] [bit] NULL,
+	[ParentID] [bigint] NULL,
+	[IDContact] [bigint] NULL,
+	[SoDuDauKy] [float] NULL,
+	[TonCuoiKy] [float] NULL,
+	[IDCurrency] [bigint] NULL,
+	[CreateDate] [date] NULL,
+ CONSTRAINT [PK_tblDMVanPhong] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMVesselAndCarrier]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMVesselAndCarrier](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDCarrier] [bigint] NULL,
+	[IDVessel] [bigint] NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMVesselAndCarrier] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMXeOto]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMXeOto](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDTaiXe] [bigint] NULL,
+	[IDMooc] [bigint] NULL,
+	[EnumLoaiXe] [int] NULL,
+	[EnumLoaiTaiXe] [int] NULL,
+	[BienSoXE] [nvarchar](50) NULL,
+	[NgayDangKiem] [datetime] NULL,
+	[TrongTai] [float] NULL,
+	[HanBaoHiem] [datetime] NULL,
+	[HanDangKiem] [datetime] NULL,
+	[MaGPS] [nvarchar](100) NULL,
+	[D] [float] NULL,
+	[R] [float] NULL,
+	[C] [float] NULL,
+	[CBM] [float] NULL,
+	[Note] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMXeOto] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblDMYardCargo]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblDMYardCargo](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[NameVI] [nvarchar](50) NULL,
+	[NameEN] [nvarchar](50) NULL,
+	[AddressVI] [nvarchar](250) NULL,
+	[AddressEN] [nvarchar](250) NULL,
+	[FlagFavorite] [bit] NULL,
+ CONSTRAINT [PK_tblDMKhoBai] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJOB]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJOB](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[EnumTypeOfTransport] [int] NULL,
+	[EnumTypeOfMove] [int] NULL,
+	[EnumTypeOfTrade] [int] NULL,
+	[STT] [int] NULL,
+	[CodeJOB] [nvarchar](30) NULL,
+	[ContractNo] [nvarchar](30) NULL,
+	[IDContract] [bigint] NULL,
+	[IDQuotation] [bigint] NULL,
+	[IDSender] [bigint] NULL,
+	[IDSenderQuocGia] [bigint] NULL,
+	[IDSenderDoor] [bigint] NULL,
+	[IDSenderPort] [bigint] NULL,
+	[IDSenderTerminal] [bigint] NULL,
+	[SenderAddressInPort] [nvarchar](max) NULL,
+	[IDSenderKho] [bigint] NULL,
+	[IDReceiver] [bigint] NULL,
+	[IDReceiverQuocGia] [bigint] NULL,
+	[IDReceiverDoor] [bigint] NULL,
+	[IDReceiverPort] [bigint] NULL,
+	[IDReceiverTerminal] [bigint] NULL,
+	[IDReceiverKho] [bigint] NULL,
+	[ReceiverAddressInPort] [nvarchar](max) NULL,
+	[TransitDay] [int] NULL,
+	[IDSale] [bigint] NULL,
+	[EnumReceiverAgent] [int] NULL,
+	[IDHandlingAgent] [bigint] NULL,
+	[IDNominateAgent] [bigint] NULL,
+	[IDCoLoader] [bigint] NULL,
+	[IDCoLoaderMethod] [bigint] NULL,
+	[ETDATD] [datetime] NULL,
+	[ETAATA] [datetime] NULL,
+	[MBLNumber] [nvarchar](30) NULL,
+	[IDMBLPayment] [bigint] NULL,
+	[IDMBLStatus] [bigint] NULL,
+	[HBLNumber] [nvarchar](30) NULL,
+	[IDHBLPayment] [bigint] NULL,
+	[IDHBLStatus] [bigint] NULL,
+	[Note] [nvarchar](250) NULL,
+	[IDAirLine] [bigint] NULL,
+	[IDAirLineBrach] [bigint] NULL,
+	[IDCarier] [bigint] NULL,
+	[IDCarierBranch] [bigint] NULL,
+	[IDDeptVessel] [bigint] NULL,
+	[DeptVesel] [nvarchar](250) NULL,
+	[VoyageNo] [nvarchar](30) NULL,
+	[FlightNumber] [nvarchar](30) NULL,
+	[IDLocalTransport] [bigint] NULL,
+	[IDServiceSupplier] [bigint] NULL,
+	[EnumStatusJob] [int] NULL,
+	[Comodity] [nvarchar](250) NULL,
+	[GoodsDescription] [nvarchar](250) NULL,
+	[VolumeDescription] [nvarchar](250) NULL,
+	[OpenDate] [datetime] NULL,
+	[CloseDate] [datetime] NULL,
+	[CreateDate] [datetime] NULL,
+	[EditDate] [datetime] NULL,
+	[IDUserCreate] [bigint] NULL,
+	[IDGWUnit] [bigint] NULL,
+	[IDMeasUnit] [bigint] NULL,
+	[EnumGWUnitLCL] [int] NULL,
+	[EnumMeasUnitLCL] [int] NULL,
+	[IDCurrencyViewProfit] [bigint] NULL,
+	[ExchangeDate] [date] NULL,
+	[CutOfDate] [datetime] NULL,
+	[CutOfSI] [datetime] NULL,
+	[CutOfVGM] [datetime] NULL,
+	[IsLocked] [bit] NULL,
+	[IsEditLocked] [bit] NULL,
+	[IsChargeLocked] [bit] NULL,
+	[IsCargoLocked] [bit] NULL,
+	[IsToDoLocked] [bit] NULL,
+	[IsAccountingLocked] [bit] NULL,
+	[NumberOfCustoms] [nvarchar](50) NULL,
+	[DateLoadingAtDoor] [datetime] NULL,
+	[DateDiscardAtDoor] [datetime] NULL,
+	[EnumLCLFCL] [int] NULL,
+	[DoorSenderInput] [nvarchar](250) NULL,
+	[DoorReceiverInput] [nvarchar](250) NULL,
+	[PlaceOfReceipt] [nvarchar](max) NULL,
+	[PlaceOfDelivery] [nvarchar](max) NULL,
+	[LoHangUuTien] [bit] NULL,
+	[HanGiaoToKhai] [datetime] NULL,
+	[IDStatusTrans] [bigint] NULL,
+	[EnumLoaiHoaDon] [int] NULL,
+	[TenNguoiLienHe] [nvarchar](50) NULL,
+	[SoDTNguoiLienHe] [nvarchar](50) NULL,
+	[ChucDanhNguoiLienHe] [nvarchar](50) NULL,
+	[EnumType] [int] NULL,
+ CONSTRAINT [PK_tblJOB] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJobAccountingRequest]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJobAccountingRequest](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDJOB] [bigint] NULL,
+	[IDRelation] [bigint] NULL,
+	[IDToDo] [bigint] NULL,
+	[IDDebitCredit] [bigint] NULL,
+	[IDPhongBan] [bigint] NULL,
+	[IDKeToan] [bigint] NULL,
+	[IDDMVanPhong] [bigint] NULL,
+	[EnumRequestType] [int] NULL,
+	[EnumRequestStatus] [int] NULL,
+	[RequestNo] [nvarchar](50) NULL,
+	[BL] [nvarchar](50) NULL,
+	[NguoiNhan] [nvarchar](250) NULL,
+	[Phone] [nvarchar](50) NULL,
+	[DiaChi] [nvarchar](250) NULL,
+	[ReasonPayment] [nvarchar](250) NULL,
+	[EnumCashOrBankTransfer] [int] NULL,
+	[PaymentDate] [date] NULL,
+	[Note] [nvarchar](250) NULL,
+	[TimeCreated] [datetime] NULL,
+	[Explane] [nvarchar](50) NULL,
+	[IDTarget] [bigint] NULL,
+	[CreateByApp] [bit] NULL,
+	[NguoiGui] [nvarchar](250) NULL,
+	[PhoneNguoiGui] [nvarchar](50) NULL,
+	[DiaChiNguoiGui] [nvarchar](250) NULL,
+	[RebatePercent] [float] NULL,
+	[RebateMoney] [float] NULL,
+	[IDCurrency] [bigint] NULL,
+	[Amount] [float] NULL,
+	[IDNguoiLap] [bigint] NULL,
+	[EnumThuChi] [int] NULL,
+	[IDPheDuyet1] [bigint] NULL,
+	[IDPheDuyet2] [bigint] NULL,
+	[IDPheDuyet3] [bigint] NULL,
+	[IDPheDuyet4] [bigint] NULL,
+	[IDPheDuyet5] [bigint] NULL,
+	[ReasonReject1] [nvarchar](250) NULL,
+	[ReasonReject2] [nvarchar](250) NULL,
+	[ReasonReject3] [nvarchar](250) NULL,
+	[ReasonReject4] [nvarchar](250) NULL,
+	[ReasonReject5] [nvarchar](250) NULL,
+	[BankAccount] [nvarchar](150) NULL,
+	[BankName] [nvarchar](150) NULL,
+	[BankBranchName] [nvarchar](150) NULL,
+	[NameChargeList] [nvarchar](250) NULL,
+	[IDChargeList] [nvarchar](50) NULL,
+	[STT] [int] NULL,
+	[FlagThuChi] [bit] NULL,
+	[FlagHoanUng] [bit] NULL,
+ CONSTRAINT [PK_tblJobAccountingRequest] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJOBBaoGia]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJOBBaoGia](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDJOB] [bigint] NULL,
+	[IDObject] [bigint] NULL,
+	[RefNo] [nvarchar](20) NULL,
+	[NameVI] [nvarchar](150) NULL,
+	[NameEN] [nvarchar](150) NULL,
+	[EnumQuotationType] [int] NULL,
+	[EnumCommondity] [int] NULL,
+	[ValidityDate] [date] NULL,
+	[ValidityDuration] [int] NULL,
+	[ExpityDate] [date] NULL,
+	[SenderDate] [date] NULL,
+	[IDSale] [bigint] NULL,
+	[IDCurrency] [bigint] NULL,
+	[Note] [nvarchar](250) NULL,
+	[NoiDungBaoGia] [nvarchar](max) NULL,
+	[CreateDate] [datetime] NULL,
+	[EditDate] [datetime] NULL,
+	[IsBookingConfirmed] [bit] NULL,
+	[IDUserCreate] [bigint] NULL,
+ CONSTRAINT [PK_tblJOBBaoGia] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJOBBaoGiaDetail]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJOBBaoGiaDetail](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDJOBBaoGiaRouting] [bigint] NULL,
+	[IDChage] [bigint] NULL,
+	[IDUnitSea] [bigint] NULL,
+	[IDUnitAir] [bigint] NULL,
+	[IDDonViTinh] [bigint] NULL,
+	[IDTruckUnit] [bigint] NULL,
+	[UnitPrice] [float] NULL,
+	[VAT] [float] NULL,
+	[Note] [nvarchar](250) NULL,
+	[Quantity] [float] NULL,
+	[IDCurrency] [bigint] NULL,
+	[Amount] [float] NULL,
+ CONSTRAINT [PK_tblJOBBaoGiaSeaDetail] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJOBBaoGiaRouting]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJOBBaoGiaRouting](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDObject] [bigint] NULL,
+	[IDJOBBaoGia] [bigint] NULL,
+	[EnumTypeOfTransport] [int] NULL,
+	[EnumTypeOfMove] [int] NULL,
+	[EnumTypeOfTrade] [int] NULL,
+	[EnumGoodsTransportSea] [int] NULL,
+	[IDSenderQuocGia] [bigint] NULL,
+	[IDSenderDoor] [bigint] NULL,
+	[IDSenderPort] [bigint] NULL,
+	[IDSenderTerminal] [bigint] NULL,
+	[IDReceiverQuocGia] [bigint] NULL,
+	[IDReceiverDoor] [bigint] NULL,
+	[IDReceiverPort] [bigint] NULL,
+	[IDReceiverTerminal] [bigint] NULL,
+	[IDSenderKho] [bigint] NULL,
+	[IDReceiverKho] [bigint] NULL,
+	[Frequency] [nvarchar](250) NULL,
+	[ETC_FREQ] [nvarchar](250) NULL,
+	[ETD_FREQ] [nvarchar](250) NULL,
+	[EnumLichTrinh] [int] NULL,
+	[TransitTime] [datetime] NULL,
+	[IDCountryTransit] [bigint] NULL,
+	[IDTransitPort] [bigint] NULL,
+	[TransitDay] [int] NULL,
+	[NoteReport] [nvarchar](max) NULL,
+ CONSTRAINT [PK_tblJOBBaoGiaRouting] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJOBChargeList]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJOBChargeList](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDHangHoa] [bigint] NULL,
+	[IDDMCharge] [bigint] NULL,
+	[IDJOBRelationCharge] [bigint] NULL,
+	[EnumChargeDebitCredit] [int] NULL,
+	[IDSeaUnit] [bigint] NULL,
+	[IDAirUnit] [bigint] NULL,
+	[UnitPrice] [float] NULL,
+	[Quantity] [float] NULL,
+	[VAT] [float] NULL,
+	[Amount] [float] NULL,
+	[AmountByExchange] [float] NULL,
+	[EditDate] [datetime] NULL,
+	[CreateDate] [datetime] NULL,
+	[IDEditUser] [bigint] NULL,
+	[Note] [nvarchar](250) NULL,
+	[OnBehalf] [bit] NULL,
+	[FlagPrinted] [bit] NULL,
+	[IsLocked] [bit] NULL,
+	[ExchangeRate] [float] NULL,
+	[IDCurrency] [bigint] NULL,
+	[TyGiaOfDMCharge] [float] NULL,
+	[TyGiaQuyDoi] [float] NULL,
+	[TyGiaDate] [date] NULL,
+	[IDDonViTinh] [bigint] NULL,
+	[IDTruckUnit] [bigint] NULL,
+	[EnumSeaAir] [int] NULL,
+	[SoChungTu] [nvarchar](50) NULL,
+	[NgayXuatCT] [datetime] NULL,
+	[ContainerNumber] [nvarchar](100) NULL,
+	[SealNo] [nvarchar](100) NULL,
+ CONSTRAINT [PK_tblJOBChargeList] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJOBChargeRelationShip]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJOBChargeRelationShip](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDChargeGroup] [bigint] NULL,
+	[IDObject] [bigint] NULL,
+	[EnumChargeObject] [int] NULL,
+	[EnumObjectFix] [int] NULL,
+	[IsExtraObject] [bit] NULL,
+	[EditDate] [datetime] NULL,
+	[CreateDate] [datetime] NULL,
+	[DEBIT] [float] NULL,
+	[CREDIT] [float] NULL,
+ CONSTRAINT [PK_tblJOBRelationCharge] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJOBChargesGroup]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJOBChargesGroup](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDJOB] [bigint] NULL,
+	[EnumChargeObject] [int] NULL,
+	[EditDate] [datetime] NULL,
+	[CreateDate] [datetime] NULL,
+ CONSTRAINT [PK_tblJOBChargeGroup] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJOBCongViecKhac]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJOBCongViecKhac](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDJOB] [bigint] NULL,
+	[SoChungTu] [nvarchar](50) NULL,
+	[NgayCap] [datetime] NULL,
+	[HanHoanThanh] [datetime] NULL,
+	[NoiDung] [nvarchar](max) NULL,
+	[GhiChu] [nvarchar](max) NULL,
+ CONSTRAINT [PK_tblJOBCongViecKhac] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJOBContract]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJOBContract](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDObject] [bigint] NULL,
+	[IDContractType] [bigint] NULL,
+	[IDSale] [bigint] NULL,
+	[IDPaymentTerm] [bigint] NULL,
+	[IDUserCreate] [bigint] NULL,
+	[ContractNo] [nvarchar](50) NULL,
+	[NguoiKy] [nvarchar](150) NULL,
+	[NgayKy] [date] NULL,
+	[NgayBatDau] [date] NULL,
+	[NgayKetThuc] [date] NULL,
+	[GiaTriHopDong] [float] NULL,
+	[ChoPhepNo] [bit] NULL,
+	[ThoiHanThanhToan] [int] NULL,
+	[DuNoToiDa] [float] NULL,
+	[SoNgayChoPhepNo] [int] NULL,
+	[Note] [nvarchar](250) NULL,
+	[CreateDate] [datetime] NULL,
+	[EditDate] [datetime] NULL,
+	[PhatCham] [float] NULL,
+	[TienTamUng] [float] NULL,
+	[PhanTramTamUng] [float] NULL,
+ CONSTRAINT [PK_tblHopDong] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJOBDebitCreditNote]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJOBDebitCreditNote](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDJOB] [bigint] NULL,
+	[IDJobRelation] [bigint] NULL,
+	[IDObject] [bigint] NULL,
+	[IDCurrencyAtTime] [bigint] NULL,
+	[NguoiNhan] [nvarchar](250) NULL,
+	[Amount] [float] NULL,
+	[EnumDebitCredit] [int] NULL,
+	[CreateDate] [date] NULL,
+	[EditDate] [date] NULL,
+	[IDSale] [bigint] NULL,
+	[EnumDebitCreditNoteStatus] [int] NULL,
+	[HanThanhToan] [date] NULL,
+	[IDUser] [bigint] NULL,
+	[EnumCreditKind] [int] NULL,
+	[PrintDraftCount] [int] NULL,
+	[PrintedChargeIDs] [nvarchar](max) NULL,
+	[NumberOfPrintedTimes] [int] NULL,
+	[PrintDateTime] [datetime] NULL,
+	[RefNo] [nvarchar](50) NULL,
+	[STT] [int] NULL,
+	[IsAppoved] [bit] NULL,
+	[FlagThuChi] [bit] NULL,
+ CONSTRAINT [PK_tblJOBDebitCreditNode] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJOBDocument]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJOBDocument](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDJOB] [bigint] NULL,
+	[IDDMToDo] [bigint] NULL,
+	[IDUserUpload] [bigint] NULL,
+	[IDJOBTodo] [bigint] NULL,
+	[EnumDocumentType] [int] NULL,
+	[EnumReportUse] [int] NULL,
+	[Path] [nvarchar](250) NULL,
+	[FileName] [nvarchar](max) NULL,
+	[Description] [nvarchar](250) NULL,
+	[CreateDate] [datetime] NULL,
+	[IDTheoDoiVanChuyen] [bigint] NULL,
+ CONSTRAINT [PK_tblJOBDocument] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJOBHangHoaTruck]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJOBHangHoaTruck](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDJOB] [bigint] NULL,
+	[IDLoaiDongGoi] [bigint] NULL,
+	[IDFCLUnit] [bigint] NULL,
+	[IDLCLUnit] [bigint] NULL,
+	[IDAirUnit] [bigint] NULL,
+	[IDDonViTinh] [bigint] NULL,
+	[GrossWeight] [float] NULL,
+	[MaesWeight] [float] NULL,
+	[VolumeWeight] [float] NULL,
+	[TrongLuongTheTich] [float] NULL,
+	[NetWeight] [float] NULL,
+	[L] [int] NULL,
+	[W] [int] NULL,
+	[H] [int] NULL,
+	[ContainerNo] [nvarchar](50) NULL,
+	[SealNo] [nvarchar](50) NULL,
+	[NumPackage] [int] NULL,
+	[Note] [nvarchar](250) NULL,
+	[CreateDate] [datetime] NULL,
+	[EditDate] [datetime] NULL,
+	[DateLoadingGoods] [datetime] NULL,
+	[LoadingPlaceOfReceipt] [nvarchar](250) NULL,
+	[DateDischargeGoods] [datetime] NULL,
+	[DischargePlaceOfReceipt] [nvarchar](250) NULL,
+	[EnumTruckUnitType] [int] NULL,
+	[FlagAlreadyTranspoted] [bit] NULL,
+	[HanLenhVo] [date] NULL,
+	[SRORAGE] [date] NULL,
+	[NoiDong] [nvarchar](250) NULL,
+	[ThoiGianDong] [datetime] NULL,
+	[NoiTra] [nvarchar](250) NULL,
+	[ThoiGianTra] [datetime] NULL,
+	[DDKiemHoa] [nvarchar](250) NULL,
+	[DEM] [date] NULL,
+	[DET] [date] NULL,
+	[StatusHangHoa] [bit] NULL,
+	[EnumCargoSeaAirTruckType] [int] NULL,
+ CONSTRAINT [PK_tblJOBTruck] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJOBObject]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJOBObject](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[EnumAgentCompanyType] [int] NULL,
+	[IDCustomer] [bigint] NULL,
+	[IDAirline] [bigint] NULL,
+	[IDAirlineBranch] [bigint] NULL,
+	[IDCarrier] [bigint] NULL,
+	[IDCarrierBranch] [bigint] NULL,
+	[IDAgent] [bigint] NULL,
+	[IDCoLoader] [bigint] NULL,
+	[IDPackageSupplier] [bigint] NULL,
+	[IDServiceSupplier] [bigint] NULL,
+	[IDLocalTransporter] [bigint] NULL,
+	[IDDoor] [bigint] NULL,
+	[IDPort] [bigint] NULL,
+	[IDContact] [bigint] NULL,
+ CONSTRAINT [PK_tblJOBObject] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJOBPhieuThuChi]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJOBPhieuThuChi](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[EnumLoaiPhieu] [int] NULL,
+	[EnumStatus] [int] NULL,
+	[EnumCashOrBankTransfer] [int] NULL,
+	[BillNo] [nvarchar](50) NULL,
+	[IDJob] [bigint] NULL,
+	[IDObject] [bigint] NULL,
+	[IDRequest] [bigint] NULL,
+	[IDDebitNote] [bigint] NULL,
+	[IDNguoiLap] [bigint] NULL,
+	[IDCurrency] [bigint] NULL,
+	[IDContract] [bigint] NULL,
+	[RequestNo] [nvarchar](50) NULL,
+	[EditDate] [datetime] NULL,
+	[CreateDate] [datetime] NULL,
+	[NguoiGui] [nvarchar](250) NULL,
+	[PhoneNguoiGui] [nvarchar](50) NULL,
+	[DiaChiNguoiGui] [nvarchar](250) NULL,
+	[NguoiNhan] [nvarchar](250) NULL,
+	[Phone] [nvarchar](50) NULL,
+	[DiaChi] [nvarchar](250) NULL,
+	[NgayThuChi] [date] NULL,
+	[Amount] [float] NULL,
+	[Note] [nvarchar](250) NULL,
+	[TaiKhoanKhachHang] [nvarchar](50) NULL,
+	[NganHangKhachHang] [nvarchar](250) NULL,
+	[TaiKhoanCongTy] [nvarchar](50) NULL,
+	[NganHangCongTy] [nvarchar](250) NULL,
+	[SoHoaDon] [nvarchar](50) NULL,
+	[NgayXuatHoaDon] [datetime] NULL,
+	[IDVanPhong] [bigint] NULL,
+	[EnumLoaiPhieuTamUng] [int] NULL,
+	[TaiKhoanCo] [float] NULL,
+	[TaiKhoanNo] [float] NULL,
+	[MaChiPhi] [nvarchar](50) NULL,
+	[IDBankAccount] [bigint] NULL,
+	[TaiKhoanNhan] [nvarchar](50) NULL,
+	[NganHangNhan] [nvarchar](250) NULL,
+	[TaiKhoanGui] [nvarchar](50) NULL,
+	[NganHangGui] [nvarchar](250) NULL,
+	[TonCuoiKy] [float] NULL,
+	[NameChargeList] [nvarchar](250) NULL,
+	[IDChargeList] [nvarchar](50) NULL,
+	[STT] [int] NULL,
+	[IDObjectForCustomer] [bigint] NULL,
+	[ListIDDebit] [nvarchar](max) NULL,
+	[ListIDRequest] [nvarchar](max) NULL,
+	[IDNVTamUng] [bigint] NULL,
+	[IDPhongBanTamUng] [bigint] NULL,
+	[EnumLoaiHoanUng] [int] NULL,
+	[FlagChiChungTu] [bit] NULL,
+	[FlagThuChiKhac] [bit] NULL,
+	[IDVanPhongChi] [bigint] NULL,
+	[IDVanPhongNhan] [bigint] NULL,
+	[IDPhongBanNhan] [bigint] NULL,
+ CONSTRAINT [PK_tblJOBPhieuThuChi] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJOBPrintTimesManagement]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJOBPrintTimesManagement](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDJOB] [bigint] NULL,
+	[IDJobRelation] [bigint] NULL,
+	[CreateDate] [datetime] NULL,
+	[EditDate] [datetime] NULL,
+	[IDUser] [bigint] NULL,
+	[IDSale] [bigint] NULL,
+	[PrintDraftCount] [int] NULL,
+	[NumberOfPrintedTimes] [int] NULL,
+	[PrintDateTime] [datetime] NULL,
+	[RefNo] [nvarchar](50) NULL,
+	[STT] [int] NULL,
+	[EnumPrintingDocumentType] [int] NULL,
+	[EnumPrintStatus] [int] NULL,
+	[EnumTypeOfTransportation] [int] NULL,
+ CONSTRAINT [PK_tblJOBPrintTimesManagement] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJOBRouting]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJOBRouting](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDJOB] [bigint] NULL,
+	[IDCountryLoading] [bigint] NULL,
+	[IDPortLoading] [bigint] NULL,
+	[IDCountryDischarge] [bigint] NULL,
+	[IDPortDischarge] [bigint] NULL,
+	[IDDoorLoading] [bigint] NULL,
+	[IDDoorDischarge] [bigint] NULL,
+	[ETDATD] [datetime] NULL,
+	[ETAATA] [datetime] NULL,
+	[DeptVessel] [nvarchar](250) NULL,
+	[VoyageFlightNo] [nvarchar](50) NULL,
+	[Note] [nvarchar](250) NULL,
+ CONSTRAINT [PK_tblJOBRouting] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJOBService]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJOBService](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDJOB] [bigint] NULL,
+	[IDService] [bigint] NULL,
+	[IDServiceSupplier] [bigint] NULL,
+	[IDContact] [bigint] NULL,
+	[StartDate] [date] NULL,
+	[FinishDate] [date] NULL,
+	[PaymentDate] [date] NULL,
+	[Note] [nvarchar](250) NULL,
+	[BuyPrice] [float] NULL,
+	[SellPrice] [float] NULL,
+	[CreateDate] [datetime] NULL,
+	[EditDate] [datetime] NULL,
+ CONSTRAINT [PK_tblJOBDichVuCungCap] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJOBToDoList]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJOBToDoList](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDJOB] [bigint] NULL,
+	[IDDMToDo] [bigint] NULL,
+	[IDObject] [bigint] NULL,
+	[ParentID] [bigint] NULL,
+	[CreateDate] [datetime] NULL,
+	[EditDate] [datetime] NULL,
+	[Description] [nvarchar](max) NULL,
+	[StartAfterJobOpenDate] [int] NULL,
+	[FinishBeforeJobCutOfDate] [int] NULL,
+	[Phone] [nvarchar](50) NULL,
+	[IDAssignPhongBan] [bigint] NULL,
+	[IDAssignToDo] [bigint] NULL,
+	[AssignDate] [date] NULL,
+	[AlertAfterAssignDate] [int] NULL,
+	[AlertBeforeEndDate] [int] NULL,
+	[EndDate] [datetime] NULL,
+	[EnumToDoStatus] [int] NULL,
+	[ToDoStatusChangeDate] [datetime] NULL,
+	[IDWhoToDoStatusChange] [bigint] NULL,
+	[Amount] [float] NULL,
+	[IDCurrency] [bigint] NULL,
+	[EnumCashOrBankTransfer] [int] NULL,
+	[PaymentDate] [date] NULL,
+	[CutOfDate] [date] NULL,
+	[Note] [nvarchar](250) NULL,
+	[AlertTime] [datetime] NULL,
+	[NodeID] [int] NULL,
+	[IsLocked] [bit] NULL,
+	[IsUseParentValue] [bit] NULL,
+ CONSTRAINT [PK_tblJOBToDoList] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJOBToDoListChatMessage]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJOBToDoListChatMessage](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[senderID] [bigint] NULL,
+	[targetID] [bigint] NULL,
+	[roomID] [bigint] NULL,
+	[message] [nvarchar](250) NULL,
+	[time] [datetime] NULL,
+ CONSTRAINT [PK_tblJOBToDoListChatMessage] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJOBToKhaiHaiQuan]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJOBToKhaiHaiQuan](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDJOB] [bigint] NULL,
+	[SoBill] [nvarchar](50) NULL,
+	[HanGiaoToKhai] [datetime] NULL,
+	[IDHangTau] [bigint] NULL,
+	[TenTau] [nvarchar](50) NULL,
+	[SoChuyen] [nvarchar](50) NULL,
+	[IDAirLine] [bigint] NULL,
+	[TenAirLine] [nvarchar](100) NULL,
+ CONSTRAINT [PK_tblJOBToKhaiHaiQuan] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblJOBUserAccess]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblJOBUserAccess](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDJOB] [bigint] NULL,
+	[IDUser] [bigint] NULL,
+	[IDUserGroup] [bigint] NULL,
+ CONSTRAINT [PK_tblJOBUserAccess] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblNhanSu]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblNhanSu](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDChucVu] [bigint] NULL,
+	[IDPhongBan] [bigint] NULL,
+	[IDVanPhong] [bigint] NULL,
+	[MANHANSU] [nvarchar](10) NOT NULL,
+	[MST] [nvarchar](50) NULL,
+	[HoTenVI] [nvarchar](50) NOT NULL,
+	[HoTenEN] [nvarchar](50) NULL,
+	[NamSinh] [date] NOT NULL,
+	[GioiTinh] [int] NULL,
+	[QueQuan] [nvarchar](250) NULL,
+	[DiaChiThuongTru] [nvarchar](250) NULL,
+	[DiaChiHienTai] [nvarchar](250) NULL,
+	[SoCMT] [nvarchar](50) NULL,
+	[NoiCapCMT] [nvarchar](200) NULL,
+	[NgayCapCMT] [date] NULL,
+	[SoHoChieu] [nvarchar](50) NULL,
+	[NoiCapHoChieu] [nvarchar](200) NULL,
+	[NgayCapHoChieu] [date] NULL,
+	[NgayHetHanHoChieu] [date] NULL,
+	[NgayKyHopDong] [date] NULL,
+	[PictureNV] [image] NULL,
+	[SoTaiKhoanNH] [nvarchar](50) NULL,
+	[DiDong] [nvarchar](20) NULL,
+	[Email] [nvarchar](50) NULL,
+	[SoTruong] [nvarchar](250) NULL,
+	[EnumTinhTrangHonNhan] [int] NULL,
+	[EnumNhomMau] [int] NULL,
+	[ChieuCao] [float] NULL,
+	[CanNang] [float] NULL,
+	[LUONGCOBAN] [bigint] NULL,
+	[GhiChu] [nvarchar](max) NULL,
+	[CreateDate] [datetime] NULL,
+	[EditDate] [datetime] NULL,
+	[SoBangLai] [nvarchar](50) NULL,
+	[NgayHetHanBangLai] [datetime] NULL,
+	[FlagIsManager] [bit] NULL,
+ CONSTRAINT [PK_tblNhanSu_1] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblNoiDong]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblNoiDong](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDHangHoa] [bigint] NULL,
+	[NoiDong] [nvarchar](max) NULL,
+	[ThoiGianDong] [datetime] NULL,
+	[GhiChu] [nvarchar](max) NULL,
+	[EnumTuyenFWD] [int] NULL,
+	[EnumType] [int] NULL,
+ CONSTRAINT [PK_tblNoiDongTraHang] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblNoiTra]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblNoiTra](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDHangHoa] [bigint] NULL,
+	[NoiDong] [nvarchar](max) NULL,
+	[ThoiGianDong] [datetime] NULL,
+	[GhiChu] [nvarchar](max) NULL,
+	[EnumTuyenFWD] [int] NULL,
+	[EnumType] [int] NULL,
+ CONSTRAINT [PK_tblNoiTra] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblQuickQuotationCharge]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblQuickQuotationCharge](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDQuickQuotation] [bigint] NULL,
+	[Name] [nvarchar](100) NULL,
+	[Unit] [nvarchar](50) NULL,
+	[Price] [float] NULL,
+	[Vat] [float] NULL,
+ CONSTRAINT [PK_tblQuickQuotationCharge] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblQuotationList]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblQuotationList](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[SendTo] [nvarchar](100) NULL,
+	[Transportation] [nvarchar](50) NULL,
+	[Route] [nvarchar](50) NULL,
+	[IDCurrency] [bigint] NULL,
+	[TimeCreated] [datetime] NULL,
+	[IDStaff] [bigint] NULL,
+	[IDJOB] [bigint] NULL,
+ CONSTRAINT [PK_tblQuickQuotation] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblSysConfig]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblSysConfig](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[APPKEY] [nvarchar](50) NULL,
+	[SERVERIP] [nvarchar](50) NULL,
+	[CUSTOMERNAME] [nvarchar](250) NULL,
+	[ADDRESS] [nvarchar](250) NULL,
+	[TELFAX] [nvarchar](250) NULL,
+	[Website] [nvarchar](50) NULL,
+	[Email] [nvarchar](50) NULL,
+	[MST] [nvarchar](50) NULL,
+	[HotLine] [nvarchar](50) NULL,
+	[FLAG] [int] NULL,
+	[FLAGUSE] [int] NULL,
+	[Logo] [image] NULL,
+	[LetterHead] [image] NULL,
+	[ReportHeader] [image] NULL,
+	[LogoW] [float] NULL,
+	[LogoH] [float] NULL,
+	[LogoLeft] [float] NULL,
+	[LogoTop] [float] NULL,
+	[ReportHeaderW] [float] NULL,
+	[ReportHeaderH] [float] NULL,
+	[ReportHeaderLeft] [float] NULL,
+	[ReportHeaderTop] [float] NULL,
+	[LetterHeaderW] [float] NULL,
+	[LetterHeaderH] [float] NULL,
+	[LetterHeaderLeft] [float] NULL,
+	[LetterHeaderTop] [float] NULL,
+	[LetterHeaderDistanceToLogo] [float] NULL,
+ CONSTRAINT [PK_tblSysConfig] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblSysFCMToken]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblSysFCMToken](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[UserID] [bigint] NULL,
+	[FCMToken] [nvarchar](250) NULL,
+ CONSTRAINT [PK_tblSysFCMToken] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblSysOption]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblSysOption](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Language] [int] NULL,
+	[JOBIDFormat] [nvarchar](50) NULL,
+	[USDDecimalCal] [int] NULL,
+ CONSTRAINT [PK_tblSysOption] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblSysUser]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblSysUser](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[UserName] [nvarchar](50) NULL,
+	[Password] [nvarchar](50) NULL,
+	[IDNhanVien] [bigint] NULL,
+	[IDGroupUser] [bigint] NULL,
+	[Active] [bit] NULL CONSTRAINT [DF_tblSysUser_Active]  DEFAULT ((0)),
+	[GhiChu] [nvarchar](250) NULL,
+	[Fixed] [bit] NULL,
+	[Permission] [nvarchar](max) NULL,
+	[FlagDriver] [bit] NULL,
+	[FlagHienTruongAir] [bit] NULL,
+	[FlagHienTruongPort] [bit] NULL,
+	[FlagHienTruongCustom] [bit] NULL,
+	[FlagOffice] [bit] NULL,
+	[FlagKeToan] [bit] NULL,
+	[FlagDieuPhoi] [bit] NULL,
+ CONSTRAINT [PK_tblSysUser] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblSysUserGroup]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblSysUserGroup](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[GroupName] [nvarchar](100) NULL,
+	[GhiChu] [nvarchar](150) NULL,
+	[Permission] [nvarchar](max) NULL,
+ CONSTRAINT [PK_tblSysUserGroup] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblSysUserRelationGroup]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblSysUserRelationGroup](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDGroup] [bigint] NULL,
+	[IDUser] [bigint] NULL,
+ CONSTRAINT [PK_tblSysUserRelationGroup] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblTheoDoiTrangThaiVanChuyen]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblTheoDoiTrangThaiVanChuyen](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDDMTrangThaiVanChuyen] [bigint] NULL,
+	[IDNhanVienGui] [bigint] NULL,
+	[ThoiGian] [datetime] NULL,
+	[DiaDiem] [nvarchar](500) NULL,
+	[GhiChu] [nvarchar](500) NULL,
+	[IDChuyenVanChuyen] [bigint] NULL,
+ CONSTRAINT [PK_tblTheoDoiTrangThaiVanChuyen] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblThongTinDieuPhoiXe]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblThongTinDieuPhoiXe](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[IDJOB] [bigint] NULL,
+	[IDJOBVanChuyenNoiDia] [bigint] NULL,
+	[IDLocalTransport] [bigint] NULL,
+	[IDXeVanChuyen] [bigint] NULL,
+	[IDTaiXe] [bigint] NULL,
+	[IDTaiXeCompany] [bigint] NULL,
+	[EnumThueXeOrXeMinh] [int] NULL,
+	[ChiPhiDiDuong] [float] NULL,
+	[TienDungGio] [float] NULL,
+	[KMVanChuyen] [float] NULL,
+	[XangDauTheoDinhMuc] [float] NULL,
+	[XangDauCapTheoPhieu] [float] NULL,
+	[LuongChuyen] [float] NULL,
+	[Note] [nvarchar](250) NULL,
+	[IDUser] [bigint] NULL,
+	[EditDate] [datetime] NULL,
+	[CreateDate] [datetime] NULL,
+	[ListIDsCargoLCL] [nvarchar](max) NULL,
+	[EnumFCLLCL] [int] NULL,
+	[FlagAlreadyTranspoted] [bit] NULL,
+	[EnumTrangThaiVanChuyen] [int] NULL,
+	[LuuYlaiXe] [nvarchar](max) NULL,
+	[PhanHoiCuaLaiXe] [nvarchar](max) NULL,
+	[StatusHangHoa] [bit] NULL,
+	[MaChuyen] [nvarchar](50) NULL,
+	[BienSoXeThue] [nvarchar](50) NULL,
+	[TenLaiXeThue] [nvarchar](50) NULL,
+	[DienThoaiLaiXeThue] [nvarchar](15) NULL,
+	[IDDMTrangThaiVanChuyen] [bigint] NULL,
+	[Hotline] [nvarchar](50) NULL,
+	[IDMooc] [bigint] NULL,
+	[EnumType] [int] NULL,
+ CONSTRAINT [PK_tblThongTinDieuPhoiXe] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblToKhaiChinh]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblToKhaiChinh](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[SoToKhai] [nvarchar](50) NULL,
+	[SoInvoice] [nvarchar](50) NULL,
+	[NgayToKhai] [date] NULL,
+	[EnumLuongToKhai] [int] NULL,
+	[IDLoaiHinh] [bigint] NULL,
+	[GhiChu] [nvarchar](100) NULL,
+	[IDToKhaiHaiQuan] [bigint] NULL,
+ CONSTRAINT [PK_tblToKhaiChinh] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tblToKhaiNhanh]    Script Date: 6/23/2020 11:11:41 AM ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[tblToKhaiNhanh](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[SoToKhai] [nvarchar](50) NULL,
+	[NgayToKhai] [date] NULL,
+	[EnumLuongToKhai] [int] NULL,
+	[IDLoaiHinh] [bigint] NULL,
+	[GhiChu] [nvarchar](100) NULL,
+	[IDToKhaiChinh] [bigint] NULL,
+ CONSTRAINT [PK_tblToKhaiNhanh] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]

@@ -1,0 +1,26 @@
+{
+  "name": "nap-customer-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.691.0",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.0.0",
+    "express": "^4.17.1",
+    "md5": "^2.2.1",
+    "moment": "^2.24.0",
+    "mssql": "^6.2.0",
+    "nodemailer": "*",
+    "sequelize": "^5.21.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

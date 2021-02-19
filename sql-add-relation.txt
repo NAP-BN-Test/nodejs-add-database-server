@@ -1,0 +1,1525 @@
+USE [DB_NAME]
+
+
+/****** Object:  Index [iIDQuocGia_tblDMAirLine]    Script Date: 6/23/2020 11:11:43 AM ******/
+CREATE NONCLUSTERED INDEX [iIDQuocGia_tblDMAirLine] ON [dbo].[tblDMAirLine]
+(
+	[IDQuocGia] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+/****** Object:  Index [iIDAirline_tblDMAirLineBranch]    Script Date: 6/23/2020 11:11:43 AM ******/
+CREATE NONCLUSTERED INDEX [iIDAirline_tblDMAirLineBranch] ON [dbo].[tblDMAirLineBranch]
+(
+	[IDAirline] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+/****** Object:  Index [iIDCity_tblDMAirLineBranch]    Script Date: 6/23/2020 11:11:43 AM ******/
+CREATE NONCLUSTERED INDEX [iIDCity_tblDMAirLineBranch] ON [dbo].[tblDMAirLineBranch]
+(
+	[IDCity] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+/****** Object:  Index [iIDQuocGia_tblDMAirLineBranch]    Script Date: 6/23/2020 11:11:43 AM ******/
+CREATE NONCLUSTERED INDEX [iIDQuocGia_tblDMAirLineBranch] ON [dbo].[tblDMAirLineBranch]
+(
+	[IDQuocGia] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+/****** Object:  Index [iIDQuocGia_tblDMCity]    Script Date: 6/23/2020 11:11:43 AM ******/
+CREATE NONCLUSTERED INDEX [iIDQuocGia_tblDMCity] ON [dbo].[tblDMCity]
+(
+	[IDQuocGia] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+/****** Object:  Index [iIDCity_tblDMPort]    Script Date: 6/23/2020 11:11:43 AM ******/
+CREATE NONCLUSTERED INDEX [iIDCity_tblDMPort] ON [dbo].[tblDMPort]
+(
+	[IDCity] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+/****** Object:  Index [iIDQuocGia_tblDMPort]    Script Date: 6/23/2020 11:11:43 AM ******/
+CREATE NONCLUSTERED INDEX [iIDQuocGia_tblDMPort] ON [dbo].[tblDMPort]
+(
+	[IDQuocGia] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+ALTER TABLE [dbo].[tblDMTaiXe] ADD  CONSTRAINT [DF_tblDMTaiXe_GioiTinh]  DEFAULT ((0)) FOR [GioiTinh]
+
+ALTER TABLE [dbo].[tblNhanSu] ADD  CONSTRAINT [DF_tblNhanSu_GioiTinh]  DEFAULT ((0)) FOR [GioiTinh]
+
+ALTER TABLE [dbo].[tblSysOption] ADD  CONSTRAINT [DF_tblSysOption_Language]  DEFAULT ((0)) FOR [Language]
+
+ALTER TABLE [dbo].[tblChuyenVanChuyen]  WITH CHECK ADD  CONSTRAINT [FK_tblChuyenVanChuyen_tblJOBHangHoaTruck] FOREIGN KEY([IDHangHoa])
+REFERENCES [dbo].[tblJOBHangHoaTruck] ([ID])
+
+ALTER TABLE [dbo].[tblChuyenVanChuyen] CHECK CONSTRAINT [FK_tblChuyenVanChuyen_tblJOBHangHoaTruck]
+
+ALTER TABLE [dbo].[tblChuyenVanChuyen]  WITH CHECK ADD  CONSTRAINT [FK_tblChuyenVanChuyen_tblThongTinDieuPhoiXe] FOREIGN KEY([IDDieuPhoi])
+REFERENCES [dbo].[tblThongTinDieuPhoiXe] ([ID])
+
+ALTER TABLE [dbo].[tblChuyenVanChuyen] CHECK CONSTRAINT [FK_tblChuyenVanChuyen_tblThongTinDieuPhoiXe]
+
+ALTER TABLE [dbo].[tblDMAgent]  WITH CHECK ADD  CONSTRAINT [FK_tblDMAgent_tblDMBank] FOREIGN KEY([IDBank])
+REFERENCES [dbo].[tblDMBank] ([ID])
+
+ALTER TABLE [dbo].[tblDMAgent] CHECK CONSTRAINT [FK_tblDMAgent_tblDMBank]
+
+ALTER TABLE [dbo].[tblDMAgent]  WITH CHECK ADD  CONSTRAINT [FK_tblDMAgent_tblDMCity] FOREIGN KEY([IDCity])
+REFERENCES [dbo].[tblDMCity] ([ID])
+
+ALTER TABLE [dbo].[tblDMAgent] CHECK CONSTRAINT [FK_tblDMAgent_tblDMCity]
+
+ALTER TABLE [dbo].[tblDMAgent]  WITH CHECK ADD  CONSTRAINT [FK_tblDMAgent_tblDMQuocGia] FOREIGN KEY([IDQuocGia])
+REFERENCES [dbo].[tblDMCountry] ([ID])
+
+ALTER TABLE [dbo].[tblDMAgent] CHECK CONSTRAINT [FK_tblDMAgent_tblDMQuocGia]
+
+ALTER TABLE [dbo].[tblDMAirLine]  WITH CHECK ADD  CONSTRAINT [FK_tblDMAirLine_tblDMBank] FOREIGN KEY([IDBank])
+REFERENCES [dbo].[tblDMBank] ([ID])
+
+ALTER TABLE [dbo].[tblDMAirLine] CHECK CONSTRAINT [FK_tblDMAirLine_tblDMBank]
+
+ALTER TABLE [dbo].[tblDMAirLine]  WITH CHECK ADD  CONSTRAINT [FK_tblDMAirLine_tblDMBank1] FOREIGN KEY([IDBank])
+REFERENCES [dbo].[tblDMBank] ([ID])
+
+ALTER TABLE [dbo].[tblDMAirLine] CHECK CONSTRAINT [FK_tblDMAirLine_tblDMBank1]
+
+ALTER TABLE [dbo].[tblDMAirLine]  WITH CHECK ADD  CONSTRAINT [FK_tblDMHangMayBay_tblQuocGia] FOREIGN KEY([IDQuocGia])
+REFERENCES [dbo].[tblDMCountry] ([ID])
+
+ALTER TABLE [dbo].[tblDMAirLine] CHECK CONSTRAINT [FK_tblDMHangMayBay_tblQuocGia]
+
+ALTER TABLE [dbo].[tblDMAirLineBranch]  WITH CHECK ADD  CONSTRAINT [FK_tblChiNhanhHangMayBay_tblCity] FOREIGN KEY([IDCity])
+REFERENCES [dbo].[tblDMCity] ([ID])
+
+ALTER TABLE [dbo].[tblDMAirLineBranch] CHECK CONSTRAINT [FK_tblChiNhanhHangMayBay_tblCity]
+
+ALTER TABLE [dbo].[tblDMAirLineBranch]  WITH CHECK ADD  CONSTRAINT [FK_tblChiNhanhHangMayBay_tblDMHangMayBay] FOREIGN KEY([IDAirline])
+REFERENCES [dbo].[tblDMAirLine] ([ID])
+
+ALTER TABLE [dbo].[tblDMAirLineBranch] CHECK CONSTRAINT [FK_tblChiNhanhHangMayBay_tblDMHangMayBay]
+
+ALTER TABLE [dbo].[tblDMAirLineBranch]  WITH CHECK ADD  CONSTRAINT [FK_tblChiNhanhHangMayBay_tblQuocGia] FOREIGN KEY([IDQuocGia])
+REFERENCES [dbo].[tblDMCountry] ([ID])
+
+ALTER TABLE [dbo].[tblDMAirLineBranch] CHECK CONSTRAINT [FK_tblChiNhanhHangMayBay_tblQuocGia]
+
+ALTER TABLE [dbo].[tblDMAirLineBranch]  WITH CHECK ADD  CONSTRAINT [FK_tblDMAirLineBranch_tblDMBank] FOREIGN KEY([IDBank])
+REFERENCES [dbo].[tblDMBank] ([ID])
+
+ALTER TABLE [dbo].[tblDMAirLineBranch] CHECK CONSTRAINT [FK_tblDMAirLineBranch_tblDMBank]
+
+ALTER TABLE [dbo].[tblDMBankAccount]  WITH CHECK ADD  CONSTRAINT [FK_tblDMBankAccount_tblDMBank] FOREIGN KEY([IDBank])
+REFERENCES [dbo].[tblDMBank] ([ID])
+
+ALTER TABLE [dbo].[tblDMBankAccount] CHECK CONSTRAINT [FK_tblDMBankAccount_tblDMBank]
+
+ALTER TABLE [dbo].[tblDMBankAccount]  WITH CHECK ADD  CONSTRAINT [FK_tblDMBankAccount_tblDMCurrency] FOREIGN KEY([IDCurrency])
+REFERENCES [dbo].[tblDMCurrency] ([ID])
+
+ALTER TABLE [dbo].[tblDMBankAccount] CHECK CONSTRAINT [FK_tblDMBankAccount_tblDMCurrency]
+
+ALTER TABLE [dbo].[tblDMBankAccount]  WITH CHECK ADD  CONSTRAINT [FK_tblDMBankAccount_tblDMVanPhong] FOREIGN KEY([IDVanPhong])
+REFERENCES [dbo].[tblDMVanPhong] ([ID])
+
+ALTER TABLE [dbo].[tblDMBankAccount] CHECK CONSTRAINT [FK_tblDMBankAccount_tblDMVanPhong]
+
+ALTER TABLE [dbo].[tblDMCarrier]  WITH CHECK ADD  CONSTRAINT [FK_tblDMCarrier_tblDMBank] FOREIGN KEY([IDBank])
+REFERENCES [dbo].[tblDMBank] ([ID])
+
+ALTER TABLE [dbo].[tblDMCarrier] CHECK CONSTRAINT [FK_tblDMCarrier_tblDMBank]
+
+ALTER TABLE [dbo].[tblDMCarrier]  WITH CHECK ADD  CONSTRAINT [FK_tblDMHangTau_tblQuocGia] FOREIGN KEY([IDQuocGia])
+REFERENCES [dbo].[tblDMCountry] ([ID])
+
+ALTER TABLE [dbo].[tblDMCarrier] CHECK CONSTRAINT [FK_tblDMHangTau_tblQuocGia]
+
+ALTER TABLE [dbo].[tblDMCarrierBranch]  WITH CHECK ADD  CONSTRAINT [FK_tblDMCarrierBranch_tblDMBank] FOREIGN KEY([IDBank])
+REFERENCES [dbo].[tblDMBank] ([ID])
+
+ALTER TABLE [dbo].[tblDMCarrierBranch] CHECK CONSTRAINT [FK_tblDMCarrierBranch_tblDMBank]
+
+ALTER TABLE [dbo].[tblDMCarrierBranch]  WITH CHECK ADD  CONSTRAINT [FK_tblDMChiNhanhHangTau_tblDMCity] FOREIGN KEY([IDCity])
+REFERENCES [dbo].[tblDMCity] ([ID])
+
+ALTER TABLE [dbo].[tblDMCarrierBranch] CHECK CONSTRAINT [FK_tblDMChiNhanhHangTau_tblDMCity]
+
+ALTER TABLE [dbo].[tblDMCarrierBranch]  WITH CHECK ADD  CONSTRAINT [FK_tblDMChiNhanhHangTau_tblDMHangTau] FOREIGN KEY([IDCarrier])
+REFERENCES [dbo].[tblDMCarrier] ([ID])
+
+ALTER TABLE [dbo].[tblDMCarrierBranch] CHECK CONSTRAINT [FK_tblDMChiNhanhHangTau_tblDMHangTau]
+
+ALTER TABLE [dbo].[tblDMCarrierBranch]  WITH CHECK ADD  CONSTRAINT [FK_tblDMChiNhanhHangTau_tblDMQuocGia] FOREIGN KEY([IDQuocGia])
+REFERENCES [dbo].[tblDMCountry] ([ID])
+
+ALTER TABLE [dbo].[tblDMCarrierBranch] CHECK CONSTRAINT [FK_tblDMChiNhanhHangTau_tblDMQuocGia]
+
+ALTER TABLE [dbo].[tblDMCharge]  WITH CHECK ADD  CONSTRAINT [FK_tblDMCharge_tblDMAirUnit] FOREIGN KEY([IDAirUnit])
+REFERENCES [dbo].[tblDMAirUnit] ([ID])
+
+ALTER TABLE [dbo].[tblDMCharge] CHECK CONSTRAINT [FK_tblDMCharge_tblDMAirUnit]
+
+ALTER TABLE [dbo].[tblDMCharge]  WITH CHECK ADD  CONSTRAINT [FK_tblDMCharge_tblDMChargeType] FOREIGN KEY([IDChargeType])
+REFERENCES [dbo].[tblDMChargeType] ([ID])
+
+ALTER TABLE [dbo].[tblDMCharge] CHECK CONSTRAINT [FK_tblDMCharge_tblDMChargeType]
+
+ALTER TABLE [dbo].[tblDMCharge]  WITH CHECK ADD  CONSTRAINT [FK_tblDMCharge_tblDMDonViTinh] FOREIGN KEY([IDDonViTinh])
+REFERENCES [dbo].[tblDMDonViTinh] ([ID])
+
+ALTER TABLE [dbo].[tblDMCharge] CHECK CONSTRAINT [FK_tblDMCharge_tblDMDonViTinh]
+
+ALTER TABLE [dbo].[tblDMCharge]  WITH CHECK ADD  CONSTRAINT [FK_tblDMCharge_tblDMSeaUnit] FOREIGN KEY([IDSeaUnit])
+REFERENCES [dbo].[tblDMSeaUnit] ([ID])
+
+ALTER TABLE [dbo].[tblDMCharge] CHECK CONSTRAINT [FK_tblDMCharge_tblDMSeaUnit]
+
+ALTER TABLE [dbo].[tblDMCharge]  WITH CHECK ADD  CONSTRAINT [FK_tblDMCharge_tblDMTruckLCLUnit] FOREIGN KEY([IDTruckUnit])
+REFERENCES [dbo].[tblDMTruckLCLUnit] ([ID])
+
+ALTER TABLE [dbo].[tblDMCharge] CHECK CONSTRAINT [FK_tblDMCharge_tblDMTruckLCLUnit]
+
+ALTER TABLE [dbo].[tblDMCharge]  WITH CHECK ADD  CONSTRAINT [FK_tblDMChiPhi_tblDMCurrency] FOREIGN KEY([IDCurrency])
+REFERENCES [dbo].[tblDMCurrency] ([ID])
+
+ALTER TABLE [dbo].[tblDMCharge] CHECK CONSTRAINT [FK_tblDMChiPhi_tblDMCurrency]
+
+ALTER TABLE [dbo].[tblDMChargeDependCargoAir]  WITH CHECK ADD  CONSTRAINT [FK_tblDMDependCargoAir_tblDMAirUnit] FOREIGN KEY([IDDMUnit])
+REFERENCES [dbo].[tblDMAirUnit] ([ID])
+
+ALTER TABLE [dbo].[tblDMChargeDependCargoAir] CHECK CONSTRAINT [FK_tblDMDependCargoAir_tblDMAirUnit]
+
+ALTER TABLE [dbo].[tblDMChargeDependCargoAir]  WITH CHECK ADD  CONSTRAINT [FK_tblDMDependCargoAir_tblDMCharge] FOREIGN KEY([IDDMCharge])
+REFERENCES [dbo].[tblDMCharge] ([ID])
+
+ALTER TABLE [dbo].[tblDMChargeDependCargoAir] CHECK CONSTRAINT [FK_tblDMDependCargoAir_tblDMCharge]
+
+ALTER TABLE [dbo].[tblDMChargeDependCargoLCL]  WITH CHECK ADD  CONSTRAINT [FK_tblDMChargeDependCargoLCL_tblDMCharge] FOREIGN KEY([IDDMCharge])
+REFERENCES [dbo].[tblDMCharge] ([ID])
+
+ALTER TABLE [dbo].[tblDMChargeDependCargoLCL] CHECK CONSTRAINT [FK_tblDMChargeDependCargoLCL_tblDMCharge]
+
+ALTER TABLE [dbo].[tblDMChargeDependCargoLCL]  WITH CHECK ADD  CONSTRAINT [FK_tblDMChargeDependCargoLCL_tblDMTruckLCLUnit] FOREIGN KEY([IDDMUnit])
+REFERENCES [dbo].[tblDMTruckLCLUnit] ([ID])
+
+ALTER TABLE [dbo].[tblDMChargeDependCargoLCL] CHECK CONSTRAINT [FK_tblDMChargeDependCargoLCL_tblDMTruckLCLUnit]
+
+ALTER TABLE [dbo].[tblDMChargeDependCargoSea]  WITH CHECK ADD  CONSTRAINT [FK_tblDMDependCargoSea_tblDMCharge] FOREIGN KEY([IDDMCharge])
+REFERENCES [dbo].[tblDMCharge] ([ID])
+
+ALTER TABLE [dbo].[tblDMChargeDependCargoSea] CHECK CONSTRAINT [FK_tblDMDependCargoSea_tblDMCharge]
+
+ALTER TABLE [dbo].[tblDMChargeDependCargoSea]  WITH CHECK ADD  CONSTRAINT [FK_tblDMDependCargoSea_tblDMSeaUnit] FOREIGN KEY([IDDMUnit])
+REFERENCES [dbo].[tblDMSeaUnit] ([ID])
+
+ALTER TABLE [dbo].[tblDMChargeDependCargoSea] CHECK CONSTRAINT [FK_tblDMDependCargoSea_tblDMSeaUnit]
+
+ALTER TABLE [dbo].[tblDMChargeTemplateDetail]  WITH CHECK ADD  CONSTRAINT [FK_tblDMChargeTemplateDetail_tblDMAirUnit] FOREIGN KEY([IDAirUnit])
+REFERENCES [dbo].[tblDMAirUnit] ([ID])
+
+ALTER TABLE [dbo].[tblDMChargeTemplateDetail] CHECK CONSTRAINT [FK_tblDMChargeTemplateDetail_tblDMAirUnit]
+
+ALTER TABLE [dbo].[tblDMChargeTemplateDetail]  WITH CHECK ADD  CONSTRAINT [FK_tblDMChargeTemplateDetail_tblDMCharge] FOREIGN KEY([IDDMCharge])
+REFERENCES [dbo].[tblDMCharge] ([ID])
+
+ALTER TABLE [dbo].[tblDMChargeTemplateDetail] CHECK CONSTRAINT [FK_tblDMChargeTemplateDetail_tblDMCharge]
+
+ALTER TABLE [dbo].[tblDMChargeTemplateDetail]  WITH CHECK ADD  CONSTRAINT [FK_tblDMChargeTemplateDetail_tblDMChargeTemplateGroup] FOREIGN KEY([IDTemplateGroup])
+REFERENCES [dbo].[tblDMChargeTemplateGroup] ([ID])
+
+ALTER TABLE [dbo].[tblDMChargeTemplateDetail] CHECK CONSTRAINT [FK_tblDMChargeTemplateDetail_tblDMChargeTemplateGroup]
+
+ALTER TABLE [dbo].[tblDMChargeTemplateDetail]  WITH CHECK ADD  CONSTRAINT [FK_tblDMChargeTemplateDetail_tblDMCurrency] FOREIGN KEY([IDCurrency])
+REFERENCES [dbo].[tblDMCurrency] ([ID])
+
+ALTER TABLE [dbo].[tblDMChargeTemplateDetail] CHECK CONSTRAINT [FK_tblDMChargeTemplateDetail_tblDMCurrency]
+
+ALTER TABLE [dbo].[tblDMChargeTemplateDetail]  WITH CHECK ADD  CONSTRAINT [FK_tblDMChargeTemplateDetail_tblDMDonViTinh] FOREIGN KEY([IDDonViTinh])
+REFERENCES [dbo].[tblDMDonViTinh] ([ID])
+
+ALTER TABLE [dbo].[tblDMChargeTemplateDetail] CHECK CONSTRAINT [FK_tblDMChargeTemplateDetail_tblDMDonViTinh]
+
+ALTER TABLE [dbo].[tblDMChargeTemplateDetail]  WITH CHECK ADD  CONSTRAINT [FK_tblDMChargeTemplateDetail_tblDMSeaUnit] FOREIGN KEY([IDSeaUnit])
+REFERENCES [dbo].[tblDMSeaUnit] ([ID])
+
+ALTER TABLE [dbo].[tblDMChargeTemplateDetail] CHECK CONSTRAINT [FK_tblDMChargeTemplateDetail_tblDMSeaUnit]
+
+ALTER TABLE [dbo].[tblDMChargeTemplateDetail]  WITH CHECK ADD  CONSTRAINT [FK_tblDMChargeTemplateDetail_tblDMTruckLCLUnit] FOREIGN KEY([IDTruckUnit])
+REFERENCES [dbo].[tblDMTruckLCLUnit] ([ID])
+
+ALTER TABLE [dbo].[tblDMChargeTemplateDetail] CHECK CONSTRAINT [FK_tblDMChargeTemplateDetail_tblDMTruckLCLUnit]
+
+ALTER TABLE [dbo].[tblDMCity]  WITH CHECK ADD  CONSTRAINT [FK_tblCity_tblQuocGia] FOREIGN KEY([IDQuocGia])
+REFERENCES [dbo].[tblDMCountry] ([ID])
+
+ALTER TABLE [dbo].[tblDMCity] CHECK CONSTRAINT [FK_tblCity_tblQuocGia]
+
+ALTER TABLE [dbo].[tblDMCoLoader]  WITH CHECK ADD  CONSTRAINT [FK_tblDMCoLoader_tblDMBank] FOREIGN KEY([IDBank])
+REFERENCES [dbo].[tblDMBank] ([ID])
+
+ALTER TABLE [dbo].[tblDMCoLoader] CHECK CONSTRAINT [FK_tblDMCoLoader_tblDMBank]
+
+ALTER TABLE [dbo].[tblDMCoLoader]  WITH CHECK ADD  CONSTRAINT [FK_tblDMDonViGomHang_tblCity] FOREIGN KEY([IDCity])
+REFERENCES [dbo].[tblDMCity] ([ID])
+
+ALTER TABLE [dbo].[tblDMCoLoader] CHECK CONSTRAINT [FK_tblDMDonViGomHang_tblCity]
+
+ALTER TABLE [dbo].[tblDMCoLoader]  WITH CHECK ADD  CONSTRAINT [FK_tblDMDonViGomHang_tblQuocGia] FOREIGN KEY([IDQuocGia])
+REFERENCES [dbo].[tblDMCountry] ([ID])
+
+ALTER TABLE [dbo].[tblDMCoLoader] CHECK CONSTRAINT [FK_tblDMDonViGomHang_tblQuocGia]
+
+ALTER TABLE [dbo].[tblDMContactList]  WITH CHECK ADD  CONSTRAINT [FK_tblDMContactList_tblDMAgent] FOREIGN KEY([IDAgent])
+REFERENCES [dbo].[tblDMAgent] ([ID])
+
+ALTER TABLE [dbo].[tblDMContactList] CHECK CONSTRAINT [FK_tblDMContactList_tblDMAgent]
+
+ALTER TABLE [dbo].[tblDMContactList]  WITH CHECK ADD  CONSTRAINT [FK_tblDMContactList_tblDMAirLine] FOREIGN KEY([IDAirline])
+REFERENCES [dbo].[tblDMAirLine] ([ID])
+
+ALTER TABLE [dbo].[tblDMContactList] CHECK CONSTRAINT [FK_tblDMContactList_tblDMAirLine]
+
+ALTER TABLE [dbo].[tblDMContactList]  WITH CHECK ADD  CONSTRAINT [FK_tblDMContactList_tblDMAirLineBranch] FOREIGN KEY([IDAirlineBranch])
+REFERENCES [dbo].[tblDMAirLineBranch] ([ID])
+
+ALTER TABLE [dbo].[tblDMContactList] CHECK CONSTRAINT [FK_tblDMContactList_tblDMAirLineBranch]
+
+ALTER TABLE [dbo].[tblDMContactList]  WITH CHECK ADD  CONSTRAINT [FK_tblDMContactList_tblDMBank] FOREIGN KEY([IDBank])
+REFERENCES [dbo].[tblDMBank] ([ID])
+
+ALTER TABLE [dbo].[tblDMContactList] CHECK CONSTRAINT [FK_tblDMContactList_tblDMBank]
+
+ALTER TABLE [dbo].[tblDMContactList]  WITH CHECK ADD  CONSTRAINT [FK_tblDMContactList_tblDMCarrier] FOREIGN KEY([IDCarrierBranch])
+REFERENCES [dbo].[tblDMCarrier] ([ID])
+
+ALTER TABLE [dbo].[tblDMContactList] CHECK CONSTRAINT [FK_tblDMContactList_tblDMCarrier]
+
+ALTER TABLE [dbo].[tblDMContactList]  WITH CHECK ADD  CONSTRAINT [FK_tblDMContactList_tblDMCarrierBranch] FOREIGN KEY([IDCarrier])
+REFERENCES [dbo].[tblDMCarrierBranch] ([ID])
+
+ALTER TABLE [dbo].[tblDMContactList] CHECK CONSTRAINT [FK_tblDMContactList_tblDMCarrierBranch]
+
+ALTER TABLE [dbo].[tblDMContactList]  WITH CHECK ADD  CONSTRAINT [FK_tblDMContactList_tblDMCoLoader] FOREIGN KEY([IDCoLoader])
+REFERENCES [dbo].[tblDMCoLoader] ([ID])
+
+ALTER TABLE [dbo].[tblDMContactList] CHECK CONSTRAINT [FK_tblDMContactList_tblDMCoLoader]
+
+ALTER TABLE [dbo].[tblDMContactList]  WITH CHECK ADD  CONSTRAINT [FK_tblDMContactList_tblDMCustomer] FOREIGN KEY([IDCustomer])
+REFERENCES [dbo].[tblDMCustomer] ([ID])
+
+ALTER TABLE [dbo].[tblDMContactList] CHECK CONSTRAINT [FK_tblDMContactList_tblDMCustomer]
+
+ALTER TABLE [dbo].[tblDMContactList]  WITH CHECK ADD  CONSTRAINT [FK_tblDMContactList_tblDMDoor] FOREIGN KEY([IDDoor])
+REFERENCES [dbo].[tblDMDoor] ([ID])
+
+ALTER TABLE [dbo].[tblDMContactList] CHECK CONSTRAINT [FK_tblDMContactList_tblDMDoor]
+
+ALTER TABLE [dbo].[tblDMContactList]  WITH CHECK ADD  CONSTRAINT [FK_tblDMContactList_tblDMLocalTransporterAgent] FOREIGN KEY([IDLocalTransporter])
+REFERENCES [dbo].[tblDMLocalTransporterAgent] ([ID])
+
+ALTER TABLE [dbo].[tblDMContactList] CHECK CONSTRAINT [FK_tblDMContactList_tblDMLocalTransporterAgent]
+
+ALTER TABLE [dbo].[tblDMContactList]  WITH CHECK ADD  CONSTRAINT [FK_tblDMContactList_tblDMPackageSupplier] FOREIGN KEY([IDPackageSupplier])
+REFERENCES [dbo].[tblDMPackageSupplier] ([ID])
+
+ALTER TABLE [dbo].[tblDMContactList] CHECK CONSTRAINT [FK_tblDMContactList_tblDMPackageSupplier]
+
+ALTER TABLE [dbo].[tblDMContactList]  WITH CHECK ADD  CONSTRAINT [FK_tblDMContactList_tblDMPort] FOREIGN KEY([IDPort])
+REFERENCES [dbo].[tblDMPort] ([ID])
+
+ALTER TABLE [dbo].[tblDMContactList] CHECK CONSTRAINT [FK_tblDMContactList_tblDMPort]
+
+ALTER TABLE [dbo].[tblDMContactList]  WITH CHECK ADD  CONSTRAINT [FK_tblDMContactList_tblDMServiceSupplier] FOREIGN KEY([IDServiceSupplier])
+REFERENCES [dbo].[tblDMServiceSupplier] ([ID])
+
+ALTER TABLE [dbo].[tblDMContactList] CHECK CONSTRAINT [FK_tblDMContactList_tblDMServiceSupplier]
+
+ALTER TABLE [dbo].[tblDMContactList]  WITH CHECK ADD  CONSTRAINT [FK_tblDMNguoiLienHe_tblDMContactFun] FOREIGN KEY([IDContactFun])
+REFERENCES [dbo].[tblDMContactFun] ([ID])
+
+ALTER TABLE [dbo].[tblDMContactList] CHECK CONSTRAINT [FK_tblDMNguoiLienHe_tblDMContactFun]
+
+ALTER TABLE [dbo].[tblDMCurrencyTyGia]  WITH CHECK ADD  CONSTRAINT [FK_tblDMCurrencyTyGia_tblDMCurrency] FOREIGN KEY([IDCurrency])
+REFERENCES [dbo].[tblDMCurrency] ([ID])
+
+ALTER TABLE [dbo].[tblDMCurrencyTyGia] CHECK CONSTRAINT [FK_tblDMCurrencyTyGia_tblDMCurrency]
+
+ALTER TABLE [dbo].[tblDMCustomer]  WITH CHECK ADD  CONSTRAINT [FK_tblDMCustomer_tblDMBank] FOREIGN KEY([IDBank])
+REFERENCES [dbo].[tblDMBank] ([ID])
+
+ALTER TABLE [dbo].[tblDMCustomer] CHECK CONSTRAINT [FK_tblDMCustomer_tblDMBank]
+
+ALTER TABLE [dbo].[tblDMCustomer]  WITH CHECK ADD  CONSTRAINT [FK_tblDMCustomer_tblDMCity] FOREIGN KEY([IDCity])
+REFERENCES [dbo].[tblDMCity] ([ID])
+
+ALTER TABLE [dbo].[tblDMCustomer] CHECK CONSTRAINT [FK_tblDMCustomer_tblDMCity]
+
+ALTER TABLE [dbo].[tblDMCustomer]  WITH CHECK ADD  CONSTRAINT [FK_tblDMKhachHang_tblDMQuocGia] FOREIGN KEY([IDQuocGia])
+REFERENCES [dbo].[tblDMCountry] ([ID])
+
+ALTER TABLE [dbo].[tblDMCustomer] CHECK CONSTRAINT [FK_tblDMKhachHang_tblDMQuocGia]
+
+ALTER TABLE [dbo].[tblDMDoor]  WITH CHECK ADD  CONSTRAINT [FK_tblDMDoor_tblDMBank] FOREIGN KEY([IDBank])
+REFERENCES [dbo].[tblDMBank] ([ID])
+
+ALTER TABLE [dbo].[tblDMDoor] CHECK CONSTRAINT [FK_tblDMDoor_tblDMBank]
+
+ALTER TABLE [dbo].[tblDMDoor]  WITH CHECK ADD  CONSTRAINT [FK_tblDMDoor_tblDMCity] FOREIGN KEY([IDCity])
+REFERENCES [dbo].[tblDMCity] ([ID])
+
+ALTER TABLE [dbo].[tblDMDoor] CHECK CONSTRAINT [FK_tblDMDoor_tblDMCity]
+
+ALTER TABLE [dbo].[tblDMDoor]  WITH CHECK ADD  CONSTRAINT [FK_tblDMDoor_tblDMCountry] FOREIGN KEY([IDQuocGia])
+REFERENCES [dbo].[tblDMCountry] ([ID])
+
+ALTER TABLE [dbo].[tblDMDoor] CHECK CONSTRAINT [FK_tblDMDoor_tblDMCountry]
+
+ALTER TABLE [dbo].[tblDMKho]  WITH CHECK ADD  CONSTRAINT [FK_tblDMKho_tblDMBank] FOREIGN KEY([IDBank])
+REFERENCES [dbo].[tblDMBank] ([ID])
+
+ALTER TABLE [dbo].[tblDMKho] CHECK CONSTRAINT [FK_tblDMKho_tblDMBank]
+
+ALTER TABLE [dbo].[tblDMKho]  WITH CHECK ADD  CONSTRAINT [FK_tblDMKho_tblDMPort] FOREIGN KEY([IDPort])
+REFERENCES [dbo].[tblDMPort] ([ID])
+
+ALTER TABLE [dbo].[tblDMKho] CHECK CONSTRAINT [FK_tblDMKho_tblDMPort]
+
+ALTER TABLE [dbo].[tblDMLocalTransporterAgent]  WITH CHECK ADD  CONSTRAINT [FK_tblDMLocalTransporterAgent_tblDMBank] FOREIGN KEY([IDBank])
+REFERENCES [dbo].[tblDMBank] ([ID])
+
+ALTER TABLE [dbo].[tblDMLocalTransporterAgent] CHECK CONSTRAINT [FK_tblDMLocalTransporterAgent_tblDMBank]
+
+ALTER TABLE [dbo].[tblDMLocalTransporterAgent]  WITH CHECK ADD  CONSTRAINT [FK_tblDMLocalTransporterAgent_tblDMCity] FOREIGN KEY([IDCity])
+REFERENCES [dbo].[tblDMCity] ([ID])
+
+ALTER TABLE [dbo].[tblDMLocalTransporterAgent] CHECK CONSTRAINT [FK_tblDMLocalTransporterAgent_tblDMCity]
+
+ALTER TABLE [dbo].[tblDMLocalTransporterAgent]  WITH CHECK ADD  CONSTRAINT [FK_tblDMLocalTransporterAgent_tblDMCountry] FOREIGN KEY([IDQuocGia])
+REFERENCES [dbo].[tblDMCountry] ([ID])
+
+ALTER TABLE [dbo].[tblDMLocalTransporterAgent] CHECK CONSTRAINT [FK_tblDMLocalTransporterAgent_tblDMCountry]
+
+ALTER TABLE [dbo].[tblDMMooc]  WITH CHECK ADD  CONSTRAINT [FK_tblDMMooc_tblDMLoaiMooc] FOREIGN KEY([IDLoaiMooc])
+REFERENCES [dbo].[tblDMLoaiMooc] ([ID])
+
+ALTER TABLE [dbo].[tblDMMooc] CHECK CONSTRAINT [FK_tblDMMooc_tblDMLoaiMooc]
+
+ALTER TABLE [dbo].[tblDMPackageSupplier]  WITH CHECK ADD  CONSTRAINT [FK_tblDMPackageSupplier_tblDMBank] FOREIGN KEY([IDBank])
+REFERENCES [dbo].[tblDMBank] ([ID])
+
+ALTER TABLE [dbo].[tblDMPackageSupplier] CHECK CONSTRAINT [FK_tblDMPackageSupplier_tblDMBank]
+
+ALTER TABLE [dbo].[tblDMPackageSupplier]  WITH CHECK ADD  CONSTRAINT [FK_tblDMPackageSupplier_tblDMCity] FOREIGN KEY([IDCity])
+REFERENCES [dbo].[tblDMCity] ([ID])
+
+ALTER TABLE [dbo].[tblDMPackageSupplier] CHECK CONSTRAINT [FK_tblDMPackageSupplier_tblDMCity]
+
+ALTER TABLE [dbo].[tblDMPackageSupplier]  WITH CHECK ADD  CONSTRAINT [FK_tblDMPackageSupplier_tblDMCountry] FOREIGN KEY([IDQuocGia])
+REFERENCES [dbo].[tblDMCountry] ([ID])
+
+ALTER TABLE [dbo].[tblDMPackageSupplier] CHECK CONSTRAINT [FK_tblDMPackageSupplier_tblDMCountry]
+
+ALTER TABLE [dbo].[tblDMPhongBan]  WITH CHECK ADD  CONSTRAINT [FK_tblDMPhongBan_tblDMVanPhong] FOREIGN KEY([IDDMVanPhong])
+REFERENCES [dbo].[tblDMVanPhong] ([ID])
+
+ALTER TABLE [dbo].[tblDMPhongBan] CHECK CONSTRAINT [FK_tblDMPhongBan_tblDMVanPhong]
+
+ALTER TABLE [dbo].[tblDMPort]  WITH CHECK ADD  CONSTRAINT [FK_tblDMCang_tblDMCity] FOREIGN KEY([IDCity])
+REFERENCES [dbo].[tblDMCity] ([ID])
+
+ALTER TABLE [dbo].[tblDMPort] CHECK CONSTRAINT [FK_tblDMCang_tblDMCity]
+
+ALTER TABLE [dbo].[tblDMPort]  WITH CHECK ADD  CONSTRAINT [FK_tblDMCang_tblDMQuocGia] FOREIGN KEY([IDQuocGia])
+REFERENCES [dbo].[tblDMCountry] ([ID])
+
+ALTER TABLE [dbo].[tblDMPort] CHECK CONSTRAINT [FK_tblDMCang_tblDMQuocGia]
+
+ALTER TABLE [dbo].[tblDMPort]  WITH CHECK ADD  CONSTRAINT [FK_tblDMPort_tblDMBank] FOREIGN KEY([IDBank])
+REFERENCES [dbo].[tblDMBank] ([ID])
+
+ALTER TABLE [dbo].[tblDMPort] CHECK CONSTRAINT [FK_tblDMPort_tblDMBank]
+
+ALTER TABLE [dbo].[tblDMServiceAndSupplier]  WITH CHECK ADD  CONSTRAINT [FK_tblDMServiceAndSupplier_tblDMService] FOREIGN KEY([IDService])
+REFERENCES [dbo].[tblDMService] ([ID])
+
+ALTER TABLE [dbo].[tblDMServiceAndSupplier] CHECK CONSTRAINT [FK_tblDMServiceAndSupplier_tblDMService]
+
+ALTER TABLE [dbo].[tblDMServiceAndSupplier]  WITH CHECK ADD  CONSTRAINT [FK_tblDMServiceAndSupplier_tblDMServiceSupplier] FOREIGN KEY([IDServiceSupplier])
+REFERENCES [dbo].[tblDMServiceSupplier] ([ID])
+
+ALTER TABLE [dbo].[tblDMServiceAndSupplier] CHECK CONSTRAINT [FK_tblDMServiceAndSupplier_tblDMServiceSupplier]
+
+ALTER TABLE [dbo].[tblDMServiceSupplier]  WITH CHECK ADD  CONSTRAINT [FK_tblDMDonViCungCap_tblDMCity] FOREIGN KEY([IDCity])
+REFERENCES [dbo].[tblDMCity] ([ID])
+
+ALTER TABLE [dbo].[tblDMServiceSupplier] CHECK CONSTRAINT [FK_tblDMDonViCungCap_tblDMCity]
+
+ALTER TABLE [dbo].[tblDMServiceSupplier]  WITH CHECK ADD  CONSTRAINT [FK_tblDMDonViCungCap_tblDMQuocGia] FOREIGN KEY([IDQuocGia])
+REFERENCES [dbo].[tblDMCountry] ([ID])
+
+ALTER TABLE [dbo].[tblDMServiceSupplier] CHECK CONSTRAINT [FK_tblDMDonViCungCap_tblDMQuocGia]
+
+ALTER TABLE [dbo].[tblDMServiceSupplier]  WITH CHECK ADD  CONSTRAINT [FK_tblDMServiceSupplier_tblDMBank] FOREIGN KEY([IDBank])
+REFERENCES [dbo].[tblDMBank] ([ID])
+
+ALTER TABLE [dbo].[tblDMServiceSupplier] CHECK CONSTRAINT [FK_tblDMServiceSupplier_tblDMBank]
+
+ALTER TABLE [dbo].[tblDMTerminal]  WITH CHECK ADD  CONSTRAINT [FK_tblDMTerminal_tblDMPort] FOREIGN KEY([IDPort])
+REFERENCES [dbo].[tblDMPort] ([ID])
+
+ALTER TABLE [dbo].[tblDMTerminal] CHECK CONSTRAINT [FK_tblDMTerminal_tblDMPort]
+
+ALTER TABLE [dbo].[tblDMToDo]  WITH CHECK ADD  CONSTRAINT [FK_tblDMToDo_tblJOBStatus] FOREIGN KEY([IDJObStatus])
+REFERENCES [dbo].[tblDMStatusJob] ([ID])
+
+ALTER TABLE [dbo].[tblDMToDo] CHECK CONSTRAINT [FK_tblDMToDo_tblJOBStatus]
+
+ALTER TABLE [dbo].[tblDMToDoTemplateDetail]  WITH CHECK ADD  CONSTRAINT [FK_tblDMToDoTemplateDetail_tblDMToDo] FOREIGN KEY([IDDMToDo])
+REFERENCES [dbo].[tblDMToDo] ([ID])
+
+ALTER TABLE [dbo].[tblDMToDoTemplateDetail] CHECK CONSTRAINT [FK_tblDMToDoTemplateDetail_tblDMToDo]
+
+ALTER TABLE [dbo].[tblDMToDoTemplateDetail]  WITH CHECK ADD  CONSTRAINT [FK_tblDMToDoTemplateDetail_tblDMToDoTemplate1] FOREIGN KEY([IDToDoTemplate])
+REFERENCES [dbo].[tblDMToDoTemplate] ([ID])
+
+ALTER TABLE [dbo].[tblDMToDoTemplateDetail] CHECK CONSTRAINT [FK_tblDMToDoTemplateDetail_tblDMToDoTemplate1]
+
+ALTER TABLE [dbo].[tblDMVanPhong]  WITH CHECK ADD  CONSTRAINT [FK_tblDMVanPhong_tblDMCity] FOREIGN KEY([IDCity])
+REFERENCES [dbo].[tblDMCity] ([ID])
+
+ALTER TABLE [dbo].[tblDMVanPhong] CHECK CONSTRAINT [FK_tblDMVanPhong_tblDMCity]
+
+ALTER TABLE [dbo].[tblDMVanPhong]  WITH CHECK ADD  CONSTRAINT [FK_tblDMVanPhong_tblDMCountry] FOREIGN KEY([IDCountry])
+REFERENCES [dbo].[tblDMCountry] ([ID])
+
+ALTER TABLE [dbo].[tblDMVanPhong] CHECK CONSTRAINT [FK_tblDMVanPhong_tblDMCountry]
+
+ALTER TABLE [dbo].[tblDMVanPhong]  WITH CHECK ADD  CONSTRAINT [FK_tblDMVanPhong_tblDMCurrency] FOREIGN KEY([IDCurrency])
+REFERENCES [dbo].[tblDMCurrency] ([ID])
+
+ALTER TABLE [dbo].[tblDMVanPhong] CHECK CONSTRAINT [FK_tblDMVanPhong_tblDMCurrency]
+
+ALTER TABLE [dbo].[tblDMVanPhong]  WITH CHECK ADD  CONSTRAINT [FK_tblDMVanPhong_tblNhanSu1] FOREIGN KEY([IDKeToanTruong])
+REFERENCES [dbo].[tblNhanSu] ([ID])
+
+ALTER TABLE [dbo].[tblDMVanPhong] CHECK CONSTRAINT [FK_tblDMVanPhong_tblNhanSu1]
+
+ALTER TABLE [dbo].[tblDMVanPhong]  WITH CHECK ADD  CONSTRAINT [FK_tblDMVanPhong_tblNhanSu2] FOREIGN KEY([IDContact])
+REFERENCES [dbo].[tblNhanSu] ([ID])
+
+ALTER TABLE [dbo].[tblDMVanPhong] CHECK CONSTRAINT [FK_tblDMVanPhong_tblNhanSu2]
+
+ALTER TABLE [dbo].[tblDMVesselAndCarrier]  WITH CHECK ADD  CONSTRAINT [FK_tblDMVesselAndCarrier_tblDMCarrier] FOREIGN KEY([IDCarrier])
+REFERENCES [dbo].[tblDMCarrier] ([ID])
+
+ALTER TABLE [dbo].[tblDMVesselAndCarrier] CHECK CONSTRAINT [FK_tblDMVesselAndCarrier_tblDMCarrier]
+
+ALTER TABLE [dbo].[tblDMVesselAndCarrier]  WITH CHECK ADD  CONSTRAINT [FK_tblDMVesselAndCarrier_tblDMCarrierDeptVessel] FOREIGN KEY([IDVessel])
+REFERENCES [dbo].[tblDMCarrierDeptVessel] ([ID])
+
+ALTER TABLE [dbo].[tblDMVesselAndCarrier] CHECK CONSTRAINT [FK_tblDMVesselAndCarrier_tblDMCarrierDeptVessel]
+
+ALTER TABLE [dbo].[tblDMXeOto]  WITH CHECK ADD  CONSTRAINT [FK_tblDMXeOto_tblDMMooc] FOREIGN KEY([IDMooc])
+REFERENCES [dbo].[tblDMMooc] ([ID])
+
+ALTER TABLE [dbo].[tblDMXeOto] CHECK CONSTRAINT [FK_tblDMXeOto_tblDMMooc]
+
+ALTER TABLE [dbo].[tblDMXeOto]  WITH CHECK ADD  CONSTRAINT [FK_tblDMXeOto_tblNhanSu] FOREIGN KEY([IDTaiXe])
+REFERENCES [dbo].[tblNhanSu] ([ID])
+
+ALTER TABLE [dbo].[tblDMXeOto] CHECK CONSTRAINT [FK_tblDMXeOto_tblNhanSu]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMAgent] FOREIGN KEY([IDHandlingAgent])
+REFERENCES [dbo].[tblDMAgent] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMAgent]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMAgent1] FOREIGN KEY([IDNominateAgent])
+REFERENCES [dbo].[tblDMAgent] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMAgent1]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMAirLine] FOREIGN KEY([IDAirLine])
+REFERENCES [dbo].[tblDMAirLine] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMAirLine]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMAirLineBrach] FOREIGN KEY([IDAirLineBrach])
+REFERENCES [dbo].[tblDMAirLineBranch] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMAirLineBrach]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMCachThucGomHang] FOREIGN KEY([IDCoLoaderMethod])
+REFERENCES [dbo].[tblDMCoLoaderMethod] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMCachThucGomHang]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMCarrier] FOREIGN KEY([IDCarier])
+REFERENCES [dbo].[tblDMCarrier] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMCarrier]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMCarrierBranch] FOREIGN KEY([IDCarierBranch])
+REFERENCES [dbo].[tblDMCarrierBranch] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMCarrierBranch]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMCarrierDeptVessel] FOREIGN KEY([IDDeptVessel])
+REFERENCES [dbo].[tblDMCarrierDeptVessel] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMCarrierDeptVessel]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMCoLoader] FOREIGN KEY([IDCoLoader])
+REFERENCES [dbo].[tblDMCoLoader] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMCoLoader]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMCurrency] FOREIGN KEY([IDCurrencyViewProfit])
+REFERENCES [dbo].[tblDMCurrency] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMCurrency]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMDoorReveiver] FOREIGN KEY([IDReceiverDoor])
+REFERENCES [dbo].[tblDMDoor] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMDoorReveiver]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMDoorSender] FOREIGN KEY([IDSenderDoor])
+REFERENCES [dbo].[tblDMDoor] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMDoorSender]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMGWMeasUnit] FOREIGN KEY([IDGWUnit])
+REFERENCES [dbo].[tblDMGWMeasUnit] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMGWMeasUnit]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMGWMeasUnit1] FOREIGN KEY([IDMeasUnit])
+REFERENCES [dbo].[tblDMGWMeasUnit] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMGWMeasUnit1]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMKhachHangReceiver] FOREIGN KEY([IDReceiver])
+REFERENCES [dbo].[tblDMCustomer] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMKhachHangReceiver]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMKhachHangSender] FOREIGN KEY([IDSender])
+REFERENCES [dbo].[tblDMCustomer] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMKhachHangSender]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMKho] FOREIGN KEY([IDReceiverKho])
+REFERENCES [dbo].[tblDMKho] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMKho]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMKho1] FOREIGN KEY([IDSenderKho])
+REFERENCES [dbo].[tblDMKho] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMKho1]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMLocalTransporterAgent] FOREIGN KEY([IDLocalTransport])
+REFERENCES [dbo].[tblDMLocalTransporterAgent] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMLocalTransporterAgent]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMPaymentRuleMBL] FOREIGN KEY([IDMBLPayment])
+REFERENCES [dbo].[tblDMPaymentRuleMBL] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMPaymentRuleMBL]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMPaymentTypeHBL] FOREIGN KEY([IDHBLPayment])
+REFERENCES [dbo].[tblDMPaymentRule] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMPaymentTypeHBL]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMPortReceiver] FOREIGN KEY([IDReceiverPort])
+REFERENCES [dbo].[tblDMPort] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMPortReceiver]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMPortSender] FOREIGN KEY([IDSenderPort])
+REFERENCES [dbo].[tblDMPort] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMPortSender]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMQuocGia] FOREIGN KEY([IDSenderQuocGia])
+REFERENCES [dbo].[tblDMCountry] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMQuocGia]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMQuocGia1] FOREIGN KEY([IDReceiverQuocGia])
+REFERENCES [dbo].[tblDMCountry] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMQuocGia1]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMServiceSupplier] FOREIGN KEY([IDServiceSupplier])
+REFERENCES [dbo].[tblDMServiceSupplier] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMServiceSupplier]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMStatusJob] FOREIGN KEY([IDStatusTrans])
+REFERENCES [dbo].[tblDMStatusJob] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMStatusJob]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMStatusMBL] FOREIGN KEY([IDMBLStatus])
+REFERENCES [dbo].[tblDMStatusMBL] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMStatusMBL]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMTerminal] FOREIGN KEY([IDReceiverTerminal])
+REFERENCES [dbo].[tblDMTerminal] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMTerminal]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMTerminal1] FOREIGN KEY([IDSenderTerminal])
+REFERENCES [dbo].[tblDMTerminal] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMTerminal1]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblDMTinhTrangVanDonHBL] FOREIGN KEY([IDHBLStatus])
+REFERENCES [dbo].[tblDMStatusBillOfLading] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblDMTinhTrangVanDonHBL]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblJOBBaoGia] FOREIGN KEY([IDQuotation])
+REFERENCES [dbo].[tblJOBBaoGia] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblJOBBaoGia]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblJOBContract] FOREIGN KEY([IDContract])
+REFERENCES [dbo].[tblJOBContract] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblJOBContract]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblNhanSu] FOREIGN KEY([IDSale])
+REFERENCES [dbo].[tblNhanSu] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblNhanSu]
+
+ALTER TABLE [dbo].[tblJOB]  WITH CHECK ADD  CONSTRAINT [FK_tblJOB_tblSysUser] FOREIGN KEY([IDUserCreate])
+REFERENCES [dbo].[tblSysUser] ([ID])
+
+ALTER TABLE [dbo].[tblJOB] CHECK CONSTRAINT [FK_tblJOB_tblSysUser]
+
+ALTER TABLE [dbo].[tblJobAccountingRequest]  WITH CHECK ADD  CONSTRAINT [FK_tblJobAccountingRequest_tblDMCurrency] FOREIGN KEY([IDCurrency])
+REFERENCES [dbo].[tblDMCurrency] ([ID])
+
+ALTER TABLE [dbo].[tblJobAccountingRequest] CHECK CONSTRAINT [FK_tblJobAccountingRequest_tblDMCurrency]
+
+ALTER TABLE [dbo].[tblJobAccountingRequest]  WITH CHECK ADD  CONSTRAINT [FK_tblJobAccountingRequest_tblDMPhongBan] FOREIGN KEY([IDPhongBan])
+REFERENCES [dbo].[tblDMPhongBan] ([ID])
+
+ALTER TABLE [dbo].[tblJobAccountingRequest] CHECK CONSTRAINT [FK_tblJobAccountingRequest_tblDMPhongBan]
+
+ALTER TABLE [dbo].[tblJobAccountingRequest]  WITH CHECK ADD  CONSTRAINT [FK_tblJobAccountingRequest_tblDMVanPhong] FOREIGN KEY([IDDMVanPhong])
+REFERENCES [dbo].[tblDMVanPhong] ([ID])
+
+ALTER TABLE [dbo].[tblJobAccountingRequest] CHECK CONSTRAINT [FK_tblJobAccountingRequest_tblDMVanPhong]
+
+ALTER TABLE [dbo].[tblJobAccountingRequest]  WITH CHECK ADD  CONSTRAINT [FK_tblJobAccountingRequest_tblJOB] FOREIGN KEY([IDJOB])
+REFERENCES [dbo].[tblJOB] ([ID])
+
+ALTER TABLE [dbo].[tblJobAccountingRequest] CHECK CONSTRAINT [FK_tblJobAccountingRequest_tblJOB]
+
+ALTER TABLE [dbo].[tblJobAccountingRequest]  WITH CHECK ADD  CONSTRAINT [FK_tblJobAccountingRequest_tblJOBChargeRelationShip] FOREIGN KEY([IDRelation])
+REFERENCES [dbo].[tblJOBChargeRelationShip] ([ID])
+
+ALTER TABLE [dbo].[tblJobAccountingRequest] CHECK CONSTRAINT [FK_tblJobAccountingRequest_tblJOBChargeRelationShip]
+
+ALTER TABLE [dbo].[tblJobAccountingRequest]  WITH CHECK ADD  CONSTRAINT [FK_tblJobAccountingRequest_tblJOBDebitCreditNote] FOREIGN KEY([IDDebitCredit])
+REFERENCES [dbo].[tblJOBDebitCreditNote] ([ID])
+
+ALTER TABLE [dbo].[tblJobAccountingRequest] CHECK CONSTRAINT [FK_tblJobAccountingRequest_tblJOBDebitCreditNote]
+
+ALTER TABLE [dbo].[tblJobAccountingRequest]  WITH CHECK ADD  CONSTRAINT [FK_tblJobAccountingRequest_tblJOBToDoList] FOREIGN KEY([IDToDo])
+REFERENCES [dbo].[tblJOBToDoList] ([ID])
+
+ALTER TABLE [dbo].[tblJobAccountingRequest] CHECK CONSTRAINT [FK_tblJobAccountingRequest_tblJOBToDoList]
+
+ALTER TABLE [dbo].[tblJobAccountingRequest]  WITH CHECK ADD  CONSTRAINT [FK_tblJobAccountingRequest_tblNhanSu] FOREIGN KEY([IDKeToan])
+REFERENCES [dbo].[tblNhanSu] ([ID])
+
+ALTER TABLE [dbo].[tblJobAccountingRequest] CHECK CONSTRAINT [FK_tblJobAccountingRequest_tblNhanSu]
+
+ALTER TABLE [dbo].[tblJobAccountingRequest]  WITH CHECK ADD  CONSTRAINT [FK_tblJobAccountingRequest_tblNhanSu1] FOREIGN KEY([IDTarget])
+REFERENCES [dbo].[tblNhanSu] ([ID])
+
+ALTER TABLE [dbo].[tblJobAccountingRequest] CHECK CONSTRAINT [FK_tblJobAccountingRequest_tblNhanSu1]
+
+ALTER TABLE [dbo].[tblJobAccountingRequest]  WITH CHECK ADD  CONSTRAINT [FK_tblJobAccountingRequest_tblSysUser] FOREIGN KEY([IDNguoiLap])
+REFERENCES [dbo].[tblSysUser] ([ID])
+
+ALTER TABLE [dbo].[tblJobAccountingRequest] CHECK CONSTRAINT [FK_tblJobAccountingRequest_tblSysUser]
+
+ALTER TABLE [dbo].[tblJobAccountingRequest]  WITH CHECK ADD  CONSTRAINT [FK_tblJobAccountingRequest_tblSysUser1] FOREIGN KEY([IDPheDuyet1])
+REFERENCES [dbo].[tblSysUser] ([ID])
+
+ALTER TABLE [dbo].[tblJobAccountingRequest] CHECK CONSTRAINT [FK_tblJobAccountingRequest_tblSysUser1]
+
+ALTER TABLE [dbo].[tblJobAccountingRequest]  WITH CHECK ADD  CONSTRAINT [FK_tblJobAccountingRequest_tblSysUser2] FOREIGN KEY([IDPheDuyet2])
+REFERENCES [dbo].[tblSysUser] ([ID])
+
+ALTER TABLE [dbo].[tblJobAccountingRequest] CHECK CONSTRAINT [FK_tblJobAccountingRequest_tblSysUser2]
+
+ALTER TABLE [dbo].[tblJobAccountingRequest]  WITH CHECK ADD  CONSTRAINT [FK_tblJobAccountingRequest_tblSysUser3] FOREIGN KEY([IDPheDuyet3])
+REFERENCES [dbo].[tblSysUser] ([ID])
+
+ALTER TABLE [dbo].[tblJobAccountingRequest] CHECK CONSTRAINT [FK_tblJobAccountingRequest_tblSysUser3]
+
+ALTER TABLE [dbo].[tblJobAccountingRequest]  WITH CHECK ADD  CONSTRAINT [FK_tblJobAccountingRequest_tblSysUser4] FOREIGN KEY([IDPheDuyet4])
+REFERENCES [dbo].[tblSysUser] ([ID])
+
+ALTER TABLE [dbo].[tblJobAccountingRequest] CHECK CONSTRAINT [FK_tblJobAccountingRequest_tblSysUser4]
+
+ALTER TABLE [dbo].[tblJobAccountingRequest]  WITH CHECK ADD  CONSTRAINT [FK_tblJobAccountingRequest_tblSysUser5] FOREIGN KEY([IDPheDuyet5])
+REFERENCES [dbo].[tblSysUser] ([ID])
+
+ALTER TABLE [dbo].[tblJobAccountingRequest] CHECK CONSTRAINT [FK_tblJobAccountingRequest_tblSysUser5]
+
+ALTER TABLE [dbo].[tblJOBBaoGia]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGia_tblDMCurrency] FOREIGN KEY([IDCurrency])
+REFERENCES [dbo].[tblDMCurrency] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGia] CHECK CONSTRAINT [FK_tblJOBBaoGia_tblDMCurrency]
+
+ALTER TABLE [dbo].[tblJOBBaoGia]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGia_tblJOB] FOREIGN KEY([IDJOB])
+REFERENCES [dbo].[tblJOB] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGia] CHECK CONSTRAINT [FK_tblJOBBaoGia_tblJOB]
+
+ALTER TABLE [dbo].[tblJOBBaoGia]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGia_tblJOBObject] FOREIGN KEY([IDObject])
+REFERENCES [dbo].[tblJOBObject] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGia] CHECK CONSTRAINT [FK_tblJOBBaoGia_tblJOBObject]
+
+ALTER TABLE [dbo].[tblJOBBaoGia]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGia_tblNhanSu] FOREIGN KEY([IDSale])
+REFERENCES [dbo].[tblNhanSu] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGia] CHECK CONSTRAINT [FK_tblJOBBaoGia_tblNhanSu]
+
+ALTER TABLE [dbo].[tblJOBBaoGia]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGia_tblSysUser] FOREIGN KEY([IDUserCreate])
+REFERENCES [dbo].[tblSysUser] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGia] CHECK CONSTRAINT [FK_tblJOBBaoGia_tblSysUser]
+
+ALTER TABLE [dbo].[tblJOBBaoGiaDetail]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGiaDetail_tblDMAirUnit] FOREIGN KEY([IDUnitAir])
+REFERENCES [dbo].[tblDMAirUnit] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGiaDetail] CHECK CONSTRAINT [FK_tblJOBBaoGiaDetail_tblDMAirUnit]
+
+ALTER TABLE [dbo].[tblJOBBaoGiaDetail]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGiaDetail_tblDMCharge] FOREIGN KEY([IDChage])
+REFERENCES [dbo].[tblDMCharge] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGiaDetail] CHECK CONSTRAINT [FK_tblJOBBaoGiaDetail_tblDMCharge]
+
+ALTER TABLE [dbo].[tblJOBBaoGiaDetail]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGiaDetail_tblDMCurrency] FOREIGN KEY([IDCurrency])
+REFERENCES [dbo].[tblDMCurrency] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGiaDetail] CHECK CONSTRAINT [FK_tblJOBBaoGiaDetail_tblDMCurrency]
+
+ALTER TABLE [dbo].[tblJOBBaoGiaDetail]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGiaDetail_tblDMDonViTinh] FOREIGN KEY([IDDonViTinh])
+REFERENCES [dbo].[tblDMDonViTinh] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGiaDetail] CHECK CONSTRAINT [FK_tblJOBBaoGiaDetail_tblDMDonViTinh]
+
+ALTER TABLE [dbo].[tblJOBBaoGiaDetail]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGiaDetail_tblDMTruckLCLUnit] FOREIGN KEY([IDTruckUnit])
+REFERENCES [dbo].[tblDMTruckLCLUnit] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGiaDetail] CHECK CONSTRAINT [FK_tblJOBBaoGiaDetail_tblDMTruckLCLUnit]
+
+ALTER TABLE [dbo].[tblJOBBaoGiaDetail]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGiaDetail_tblJOBBaoGiaRouting] FOREIGN KEY([IDJOBBaoGiaRouting])
+REFERENCES [dbo].[tblJOBBaoGiaRouting] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGiaDetail] CHECK CONSTRAINT [FK_tblJOBBaoGiaDetail_tblJOBBaoGiaRouting]
+
+ALTER TABLE [dbo].[tblJOBBaoGiaDetail]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGiaSeaDetail_tblDMContainerSeaUnit] FOREIGN KEY([IDUnitSea])
+REFERENCES [dbo].[tblDMSeaUnit] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGiaDetail] CHECK CONSTRAINT [FK_tblJOBBaoGiaSeaDetail_tblDMContainerSeaUnit]
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMCountry] FOREIGN KEY([IDSenderQuocGia])
+REFERENCES [dbo].[tblDMCountry] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting] CHECK CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMCountry]
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMCountry1] FOREIGN KEY([IDReceiverQuocGia])
+REFERENCES [dbo].[tblDMCountry] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting] CHECK CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMCountry1]
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMCountry2] FOREIGN KEY([IDCountryTransit])
+REFERENCES [dbo].[tblDMCountry] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting] CHECK CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMCountry2]
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMDoor1] FOREIGN KEY([IDSenderDoor])
+REFERENCES [dbo].[tblDMDoor] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting] CHECK CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMDoor1]
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMDoor2] FOREIGN KEY([IDReceiverDoor])
+REFERENCES [dbo].[tblDMDoor] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting] CHECK CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMDoor2]
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMKho] FOREIGN KEY([IDSenderKho])
+REFERENCES [dbo].[tblDMKho] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting] CHECK CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMKho]
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMKho1] FOREIGN KEY([IDReceiverKho])
+REFERENCES [dbo].[tblDMKho] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting] CHECK CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMKho1]
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMPort1] FOREIGN KEY([IDSenderPort])
+REFERENCES [dbo].[tblDMPort] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting] CHECK CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMPort1]
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMPort2] FOREIGN KEY([IDReceiverPort])
+REFERENCES [dbo].[tblDMPort] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting] CHECK CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMPort2]
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMPort3] FOREIGN KEY([IDTransitPort])
+REFERENCES [dbo].[tblDMPort] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting] CHECK CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMPort3]
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMTerminal] FOREIGN KEY([IDSenderTerminal])
+REFERENCES [dbo].[tblDMTerminal] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting] CHECK CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMTerminal]
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMTerminal1] FOREIGN KEY([IDReceiverTerminal])
+REFERENCES [dbo].[tblDMTerminal] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting] CHECK CONSTRAINT [FK_tblJOBBaoGiaRouting_tblDMTerminal1]
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGiaRouting_tblJOBBaoGia] FOREIGN KEY([IDJOBBaoGia])
+REFERENCES [dbo].[tblJOBBaoGia] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting] CHECK CONSTRAINT [FK_tblJOBBaoGiaRouting_tblJOBBaoGia]
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBBaoGiaRouting_tblJOBObject] FOREIGN KEY([IDObject])
+REFERENCES [dbo].[tblJOBObject] ([ID])
+
+ALTER TABLE [dbo].[tblJOBBaoGiaRouting] CHECK CONSTRAINT [FK_tblJOBBaoGiaRouting_tblJOBObject]
+
+ALTER TABLE [dbo].[tblJOBChargeList]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBChargeList_tblDMAirUnit] FOREIGN KEY([IDAirUnit])
+REFERENCES [dbo].[tblDMAirUnit] ([ID])
+
+ALTER TABLE [dbo].[tblJOBChargeList] CHECK CONSTRAINT [FK_tblJOBChargeList_tblDMAirUnit]
+
+ALTER TABLE [dbo].[tblJOBChargeList]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBChargeList_tblDMCharge] FOREIGN KEY([IDDMCharge])
+REFERENCES [dbo].[tblDMCharge] ([ID])
+
+ALTER TABLE [dbo].[tblJOBChargeList] CHECK CONSTRAINT [FK_tblJOBChargeList_tblDMCharge]
+
+ALTER TABLE [dbo].[tblJOBChargeList]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBChargeList_tblDMCurrency] FOREIGN KEY([IDCurrency])
+REFERENCES [dbo].[tblDMCurrency] ([ID])
+
+ALTER TABLE [dbo].[tblJOBChargeList] CHECK CONSTRAINT [FK_tblJOBChargeList_tblDMCurrency]
+
+ALTER TABLE [dbo].[tblJOBChargeList]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBChargeList_tblDMDonViTinh] FOREIGN KEY([IDDonViTinh])
+REFERENCES [dbo].[tblDMDonViTinh] ([ID])
+
+ALTER TABLE [dbo].[tblJOBChargeList] CHECK CONSTRAINT [FK_tblJOBChargeList_tblDMDonViTinh]
+
+ALTER TABLE [dbo].[tblJOBChargeList]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBChargeList_tblDMSeaUnit] FOREIGN KEY([IDSeaUnit])
+REFERENCES [dbo].[tblDMSeaUnit] ([ID])
+
+ALTER TABLE [dbo].[tblJOBChargeList] CHECK CONSTRAINT [FK_tblJOBChargeList_tblDMSeaUnit]
+
+ALTER TABLE [dbo].[tblJOBChargeList]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBChargeList_tblDMTruckLCLUnit] FOREIGN KEY([IDTruckUnit])
+REFERENCES [dbo].[tblDMTruckLCLUnit] ([ID])
+
+ALTER TABLE [dbo].[tblJOBChargeList] CHECK CONSTRAINT [FK_tblJOBChargeList_tblDMTruckLCLUnit]
+
+ALTER TABLE [dbo].[tblJOBChargeList]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBChargeList_tblJOBHangHoaTruck] FOREIGN KEY([IDHangHoa])
+REFERENCES [dbo].[tblJOBHangHoaTruck] ([ID])
+
+ALTER TABLE [dbo].[tblJOBChargeList] CHECK CONSTRAINT [FK_tblJOBChargeList_tblJOBHangHoaTruck]
+
+ALTER TABLE [dbo].[tblJOBChargeList]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBChargeList_tblJOBRelationCharge] FOREIGN KEY([IDJOBRelationCharge])
+REFERENCES [dbo].[tblJOBChargeRelationShip] ([ID])
+
+ALTER TABLE [dbo].[tblJOBChargeList] CHECK CONSTRAINT [FK_tblJOBChargeList_tblJOBRelationCharge]
+
+ALTER TABLE [dbo].[tblJOBChargeList]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBChargeList_tblSysUser] FOREIGN KEY([IDEditUser])
+REFERENCES [dbo].[tblSysUser] ([ID])
+
+ALTER TABLE [dbo].[tblJOBChargeList] CHECK CONSTRAINT [FK_tblJOBChargeList_tblSysUser]
+
+ALTER TABLE [dbo].[tblJOBChargeRelationShip]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBChargeRelationShip_tblJOBChargeGroup] FOREIGN KEY([IDChargeGroup])
+REFERENCES [dbo].[tblJOBChargesGroup] ([ID])
+
+ALTER TABLE [dbo].[tblJOBChargeRelationShip] CHECK CONSTRAINT [FK_tblJOBChargeRelationShip_tblJOBChargeGroup]
+
+ALTER TABLE [dbo].[tblJOBChargeRelationShip]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBChargeRelationShip_tblJOBObject] FOREIGN KEY([IDObject])
+REFERENCES [dbo].[tblJOBObject] ([ID])
+
+ALTER TABLE [dbo].[tblJOBChargeRelationShip] CHECK CONSTRAINT [FK_tblJOBChargeRelationShip_tblJOBObject]
+
+ALTER TABLE [dbo].[tblJOBChargesGroup]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBChargeGroup_tblJOB] FOREIGN KEY([IDJOB])
+REFERENCES [dbo].[tblJOB] ([ID])
+
+ALTER TABLE [dbo].[tblJOBChargesGroup] CHECK CONSTRAINT [FK_tblJOBChargeGroup_tblJOB]
+
+ALTER TABLE [dbo].[tblJOBCongViecKhac]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBCongViecKhac_tblJOB] FOREIGN KEY([IDJOB])
+REFERENCES [dbo].[tblJOB] ([ID])
+
+ALTER TABLE [dbo].[tblJOBCongViecKhac] CHECK CONSTRAINT [FK_tblJOBCongViecKhac_tblJOB]
+
+ALTER TABLE [dbo].[tblJOBContract]  WITH CHECK ADD  CONSTRAINT [FK_tblHopDong_tblEnumHinhThucHopDong] FOREIGN KEY([IDContractType])
+REFERENCES [dbo].[tblDMContractType] ([ID])
+
+ALTER TABLE [dbo].[tblJOBContract] CHECK CONSTRAINT [FK_tblHopDong_tblEnumHinhThucHopDong]
+
+ALTER TABLE [dbo].[tblJOBContract]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBContract_tblDMPaymentTerm] FOREIGN KEY([IDPaymentTerm])
+REFERENCES [dbo].[tblDMPaymentTerm] ([ID])
+
+ALTER TABLE [dbo].[tblJOBContract] CHECK CONSTRAINT [FK_tblJOBContract_tblDMPaymentTerm]
+
+ALTER TABLE [dbo].[tblJOBContract]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBContract_tblNhanSu] FOREIGN KEY([IDSale])
+REFERENCES [dbo].[tblNhanSu] ([ID])
+
+ALTER TABLE [dbo].[tblJOBContract] CHECK CONSTRAINT [FK_tblJOBContract_tblNhanSu]
+
+ALTER TABLE [dbo].[tblJOBContract]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBContract_tblSysUser] FOREIGN KEY([IDUserCreate])
+REFERENCES [dbo].[tblSysUser] ([ID])
+
+ALTER TABLE [dbo].[tblJOBContract] CHECK CONSTRAINT [FK_tblJOBContract_tblSysUser]
+
+ALTER TABLE [dbo].[tblJOBContract]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBHopDong_tblJOBObject] FOREIGN KEY([IDObject])
+REFERENCES [dbo].[tblJOBObject] ([ID])
+
+ALTER TABLE [dbo].[tblJOBContract] CHECK CONSTRAINT [FK_tblJOBHopDong_tblJOBObject]
+
+ALTER TABLE [dbo].[tblJOBDebitCreditNote]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBDebitCreditNode_tblJOB] FOREIGN KEY([IDJOB])
+REFERENCES [dbo].[tblJOB] ([ID])
+
+ALTER TABLE [dbo].[tblJOBDebitCreditNote] CHECK CONSTRAINT [FK_tblJOBDebitCreditNode_tblJOB]
+
+ALTER TABLE [dbo].[tblJOBDebitCreditNote]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBDebitCreditNode_tblJOBChargeRelationShip] FOREIGN KEY([IDJobRelation])
+REFERENCES [dbo].[tblJOBChargeRelationShip] ([ID])
+
+ALTER TABLE [dbo].[tblJOBDebitCreditNote] CHECK CONSTRAINT [FK_tblJOBDebitCreditNode_tblJOBChargeRelationShip]
+
+ALTER TABLE [dbo].[tblJOBDebitCreditNote]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBDebitCreditNode_tblNhanSu] FOREIGN KEY([IDSale])
+REFERENCES [dbo].[tblNhanSu] ([ID])
+
+ALTER TABLE [dbo].[tblJOBDebitCreditNote] CHECK CONSTRAINT [FK_tblJOBDebitCreditNode_tblNhanSu]
+
+ALTER TABLE [dbo].[tblJOBDebitCreditNote]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBDebitCreditNode_tblSysUser] FOREIGN KEY([IDUser])
+REFERENCES [dbo].[tblSysUser] ([ID])
+
+ALTER TABLE [dbo].[tblJOBDebitCreditNote] CHECK CONSTRAINT [FK_tblJOBDebitCreditNode_tblSysUser]
+
+ALTER TABLE [dbo].[tblJOBDebitCreditNote]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBDebitCreditNote_tblDMCurrency] FOREIGN KEY([IDCurrencyAtTime])
+REFERENCES [dbo].[tblDMCurrency] ([ID])
+
+ALTER TABLE [dbo].[tblJOBDebitCreditNote] CHECK CONSTRAINT [FK_tblJOBDebitCreditNote_tblDMCurrency]
+
+ALTER TABLE [dbo].[tblJOBDebitCreditNote]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBDebitCreditNote_tblJOB] FOREIGN KEY([IDJOB])
+REFERENCES [dbo].[tblJOB] ([ID])
+
+ALTER TABLE [dbo].[tblJOBDebitCreditNote] CHECK CONSTRAINT [FK_tblJOBDebitCreditNote_tblJOB]
+
+ALTER TABLE [dbo].[tblJOBDebitCreditNote]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBDebitCreditNote_tblSysUser] FOREIGN KEY([IDUser])
+REFERENCES [dbo].[tblSysUser] ([ID])
+
+ALTER TABLE [dbo].[tblJOBDebitCreditNote] CHECK CONSTRAINT [FK_tblJOBDebitCreditNote_tblSysUser]
+
+ALTER TABLE [dbo].[tblJOBDocument]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBDocument_tblDMToDo] FOREIGN KEY([IDDMToDo])
+REFERENCES [dbo].[tblDMToDo] ([ID])
+
+ALTER TABLE [dbo].[tblJOBDocument] CHECK CONSTRAINT [FK_tblJOBDocument_tblDMToDo]
+
+ALTER TABLE [dbo].[tblJOBDocument]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBDocument_tblJOB] FOREIGN KEY([IDJOB])
+REFERENCES [dbo].[tblJOB] ([ID])
+
+ALTER TABLE [dbo].[tblJOBDocument] CHECK CONSTRAINT [FK_tblJOBDocument_tblJOB]
+
+ALTER TABLE [dbo].[tblJOBDocument]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBDocument_tblJOBToDoList] FOREIGN KEY([IDJOBTodo])
+REFERENCES [dbo].[tblJOBToDoList] ([ID])
+
+ALTER TABLE [dbo].[tblJOBDocument] CHECK CONSTRAINT [FK_tblJOBDocument_tblJOBToDoList]
+
+ALTER TABLE [dbo].[tblJOBDocument]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBDocument_tblSysUser] FOREIGN KEY([IDUserUpload])
+REFERENCES [dbo].[tblSysUser] ([ID])
+
+ALTER TABLE [dbo].[tblJOBDocument] CHECK CONSTRAINT [FK_tblJOBDocument_tblSysUser]
+
+ALTER TABLE [dbo].[tblJOBDocument]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBDocument_tblTheoDoiTrangThaiVanChuyen] FOREIGN KEY([IDTheoDoiVanChuyen])
+REFERENCES [dbo].[tblTheoDoiTrangThaiVanChuyen] ([ID])
+
+ALTER TABLE [dbo].[tblJOBDocument] CHECK CONSTRAINT [FK_tblJOBDocument_tblTheoDoiTrangThaiVanChuyen]
+
+ALTER TABLE [dbo].[tblJOBHangHoaTruck]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBHangHoaTruck_tblDMAirUnit] FOREIGN KEY([IDAirUnit])
+REFERENCES [dbo].[tblDMAirUnit] ([ID])
+
+ALTER TABLE [dbo].[tblJOBHangHoaTruck] CHECK CONSTRAINT [FK_tblJOBHangHoaTruck_tblDMAirUnit]
+
+ALTER TABLE [dbo].[tblJOBHangHoaTruck]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBHangHoaTruck_tblDMDonViTinh] FOREIGN KEY([IDDonViTinh])
+REFERENCES [dbo].[tblDMDonViTinh] ([ID])
+
+ALTER TABLE [dbo].[tblJOBHangHoaTruck] CHECK CONSTRAINT [FK_tblJOBHangHoaTruck_tblDMDonViTinh]
+
+ALTER TABLE [dbo].[tblJOBHangHoaTruck]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBHangHoaTruck_tblDMLoaiDongGoi] FOREIGN KEY([IDLoaiDongGoi])
+REFERENCES [dbo].[tblDMPackageMethod] ([ID])
+
+ALTER TABLE [dbo].[tblJOBHangHoaTruck] CHECK CONSTRAINT [FK_tblJOBHangHoaTruck_tblDMLoaiDongGoi]
+
+ALTER TABLE [dbo].[tblJOBHangHoaTruck]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBHangHoaTruck_tblDMSeaUnit] FOREIGN KEY([IDFCLUnit])
+REFERENCES [dbo].[tblDMSeaUnit] ([ID])
+
+ALTER TABLE [dbo].[tblJOBHangHoaTruck] CHECK CONSTRAINT [FK_tblJOBHangHoaTruck_tblDMSeaUnit]
+
+ALTER TABLE [dbo].[tblJOBHangHoaTruck]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBHangHoaTruck_tblDMTruckLCLUnit] FOREIGN KEY([IDLCLUnit])
+REFERENCES [dbo].[tblDMTruckLCLUnit] ([ID])
+
+ALTER TABLE [dbo].[tblJOBHangHoaTruck] CHECK CONSTRAINT [FK_tblJOBHangHoaTruck_tblDMTruckLCLUnit]
+
+ALTER TABLE [dbo].[tblJOBHangHoaTruck]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBHangHoaTruck_tblJOB] FOREIGN KEY([IDJOB])
+REFERENCES [dbo].[tblJOB] ([ID])
+
+ALTER TABLE [dbo].[tblJOBHangHoaTruck] CHECK CONSTRAINT [FK_tblJOBHangHoaTruck_tblJOB]
+
+ALTER TABLE [dbo].[tblJOBObject]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBObject_tblDMAgent] FOREIGN KEY([IDAgent])
+REFERENCES [dbo].[tblDMAgent] ([ID])
+
+ALTER TABLE [dbo].[tblJOBObject] CHECK CONSTRAINT [FK_tblJOBObject_tblDMAgent]
+
+ALTER TABLE [dbo].[tblJOBObject]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBObject_tblDMAirLine] FOREIGN KEY([IDAirline])
+REFERENCES [dbo].[tblDMAirLine] ([ID])
+
+ALTER TABLE [dbo].[tblJOBObject] CHECK CONSTRAINT [FK_tblJOBObject_tblDMAirLine]
+
+ALTER TABLE [dbo].[tblJOBObject]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBObject_tblDMAirLineBranch] FOREIGN KEY([IDAirlineBranch])
+REFERENCES [dbo].[tblDMAirLineBranch] ([ID])
+
+ALTER TABLE [dbo].[tblJOBObject] CHECK CONSTRAINT [FK_tblJOBObject_tblDMAirLineBranch]
+
+ALTER TABLE [dbo].[tblJOBObject]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBObject_tblDMCarrier] FOREIGN KEY([IDCarrier])
+REFERENCES [dbo].[tblDMCarrier] ([ID])
+
+ALTER TABLE [dbo].[tblJOBObject] CHECK CONSTRAINT [FK_tblJOBObject_tblDMCarrier]
+
+ALTER TABLE [dbo].[tblJOBObject]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBObject_tblDMCarrierBranch] FOREIGN KEY([IDCarrierBranch])
+REFERENCES [dbo].[tblDMCarrierBranch] ([ID])
+
+ALTER TABLE [dbo].[tblJOBObject] CHECK CONSTRAINT [FK_tblJOBObject_tblDMCarrierBranch]
+
+ALTER TABLE [dbo].[tblJOBObject]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBObject_tblDMCoLoader] FOREIGN KEY([IDCoLoader])
+REFERENCES [dbo].[tblDMCoLoader] ([ID])
+
+ALTER TABLE [dbo].[tblJOBObject] CHECK CONSTRAINT [FK_tblJOBObject_tblDMCoLoader]
+
+ALTER TABLE [dbo].[tblJOBObject]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBObject_tblDMContactList] FOREIGN KEY([IDContact])
+REFERENCES [dbo].[tblDMContactList] ([ID])
+
+ALTER TABLE [dbo].[tblJOBObject] CHECK CONSTRAINT [FK_tblJOBObject_tblDMContactList]
+
+ALTER TABLE [dbo].[tblJOBObject]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBObject_tblDMCustomer] FOREIGN KEY([IDCustomer])
+REFERENCES [dbo].[tblDMCustomer] ([ID])
+
+ALTER TABLE [dbo].[tblJOBObject] CHECK CONSTRAINT [FK_tblJOBObject_tblDMCustomer]
+
+ALTER TABLE [dbo].[tblJOBObject]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBObject_tblDMDoor] FOREIGN KEY([IDDoor])
+REFERENCES [dbo].[tblDMDoor] ([ID])
+
+ALTER TABLE [dbo].[tblJOBObject] CHECK CONSTRAINT [FK_tblJOBObject_tblDMDoor]
+
+ALTER TABLE [dbo].[tblJOBObject]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBObject_tblDMLocalTransporterAgent] FOREIGN KEY([IDLocalTransporter])
+REFERENCES [dbo].[tblDMLocalTransporterAgent] ([ID])
+
+ALTER TABLE [dbo].[tblJOBObject] CHECK CONSTRAINT [FK_tblJOBObject_tblDMLocalTransporterAgent]
+
+ALTER TABLE [dbo].[tblJOBObject]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBObject_tblDMPackageSupplier] FOREIGN KEY([IDPackageSupplier])
+REFERENCES [dbo].[tblDMPackageSupplier] ([ID])
+
+ALTER TABLE [dbo].[tblJOBObject] CHECK CONSTRAINT [FK_tblJOBObject_tblDMPackageSupplier]
+
+ALTER TABLE [dbo].[tblJOBObject]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBObject_tblDMPort] FOREIGN KEY([IDPort])
+REFERENCES [dbo].[tblDMPort] ([ID])
+
+ALTER TABLE [dbo].[tblJOBObject] CHECK CONSTRAINT [FK_tblJOBObject_tblDMPort]
+
+ALTER TABLE [dbo].[tblJOBObject]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBObject_tblDMServiceSupplier] FOREIGN KEY([IDServiceSupplier])
+REFERENCES [dbo].[tblDMServiceSupplier] ([ID])
+
+ALTER TABLE [dbo].[tblJOBObject] CHECK CONSTRAINT [FK_tblJOBObject_tblDMServiceSupplier]
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBPhieuThuChi_tblDMBankAccount] FOREIGN KEY([IDBankAccount])
+REFERENCES [dbo].[tblDMBankAccount] ([ID])
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi] CHECK CONSTRAINT [FK_tblJOBPhieuThuChi_tblDMBankAccount]
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBPhieuThuChi_tblDMCurrency] FOREIGN KEY([IDCurrency])
+REFERENCES [dbo].[tblDMCurrency] ([ID])
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi] CHECK CONSTRAINT [FK_tblJOBPhieuThuChi_tblDMCurrency]
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBPhieuThuChi_tblDMPhongBan] FOREIGN KEY([IDPhongBanTamUng])
+REFERENCES [dbo].[tblDMPhongBan] ([ID])
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi] CHECK CONSTRAINT [FK_tblJOBPhieuThuChi_tblDMPhongBan]
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBPhieuThuChi_tblDMPhongBan1] FOREIGN KEY([IDPhongBanNhan])
+REFERENCES [dbo].[tblDMPhongBan] ([ID])
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi] CHECK CONSTRAINT [FK_tblJOBPhieuThuChi_tblDMPhongBan1]
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBPhieuThuChi_tblDMVanPhong] FOREIGN KEY([IDVanPhong])
+REFERENCES [dbo].[tblDMVanPhong] ([ID])
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi] CHECK CONSTRAINT [FK_tblJOBPhieuThuChi_tblDMVanPhong]
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBPhieuThuChi_tblDMVanPhong1] FOREIGN KEY([IDVanPhongChi])
+REFERENCES [dbo].[tblDMVanPhong] ([ID])
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi] CHECK CONSTRAINT [FK_tblJOBPhieuThuChi_tblDMVanPhong1]
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBPhieuThuChi_tblDMVanPhong2] FOREIGN KEY([IDVanPhongNhan])
+REFERENCES [dbo].[tblDMVanPhong] ([ID])
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi] CHECK CONSTRAINT [FK_tblJOBPhieuThuChi_tblDMVanPhong2]
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBPhieuThuChi_tblJOB] FOREIGN KEY([IDJob])
+REFERENCES [dbo].[tblJOB] ([ID])
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi] CHECK CONSTRAINT [FK_tblJOBPhieuThuChi_tblJOB]
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBPhieuThuChi_tblJobAccountingRequest] FOREIGN KEY([IDRequest])
+REFERENCES [dbo].[tblJobAccountingRequest] ([ID])
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi] CHECK CONSTRAINT [FK_tblJOBPhieuThuChi_tblJobAccountingRequest]
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBPhieuThuChi_tblJOBChargeRelationShip] FOREIGN KEY([IDObject])
+REFERENCES [dbo].[tblJOBChargeRelationShip] ([ID])
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi] CHECK CONSTRAINT [FK_tblJOBPhieuThuChi_tblJOBChargeRelationShip]
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBPhieuThuChi_tblJOBContract] FOREIGN KEY([IDContract])
+REFERENCES [dbo].[tblJOBContract] ([ID])
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi] CHECK CONSTRAINT [FK_tblJOBPhieuThuChi_tblJOBContract]
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBPhieuThuChi_tblJOBDebitCreditNote] FOREIGN KEY([IDDebitNote])
+REFERENCES [dbo].[tblJOBDebitCreditNote] ([ID])
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi] CHECK CONSTRAINT [FK_tblJOBPhieuThuChi_tblJOBDebitCreditNote]
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBPhieuThuChi_tblJOBObject] FOREIGN KEY([IDObjectForCustomer])
+REFERENCES [dbo].[tblJOBObject] ([ID])
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi] CHECK CONSTRAINT [FK_tblJOBPhieuThuChi_tblJOBObject]
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBPhieuThuChi_tblNhanSu] FOREIGN KEY([IDNVTamUng])
+REFERENCES [dbo].[tblNhanSu] ([ID])
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi] CHECK CONSTRAINT [FK_tblJOBPhieuThuChi_tblNhanSu]
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBPhieuThuChi_tblSysUser] FOREIGN KEY([IDNguoiLap])
+REFERENCES [dbo].[tblSysUser] ([ID])
+
+ALTER TABLE [dbo].[tblJOBPhieuThuChi] CHECK CONSTRAINT [FK_tblJOBPhieuThuChi_tblSysUser]
+
+ALTER TABLE [dbo].[tblJOBPrintTimesManagement]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBPrintTimesManagement_tblJOB] FOREIGN KEY([IDJOB])
+REFERENCES [dbo].[tblJOB] ([ID])
+
+ALTER TABLE [dbo].[tblJOBPrintTimesManagement] CHECK CONSTRAINT [FK_tblJOBPrintTimesManagement_tblJOB]
+
+ALTER TABLE [dbo].[tblJOBPrintTimesManagement]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBPrintTimesManagement_tblJOBChargeRelationShip] FOREIGN KEY([IDJobRelation])
+REFERENCES [dbo].[tblJOBChargeRelationShip] ([ID])
+
+ALTER TABLE [dbo].[tblJOBPrintTimesManagement] CHECK CONSTRAINT [FK_tblJOBPrintTimesManagement_tblJOBChargeRelationShip]
+
+ALTER TABLE [dbo].[tblJOBPrintTimesManagement]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBPrintTimesManagement_tblNhanSu] FOREIGN KEY([IDSale])
+REFERENCES [dbo].[tblNhanSu] ([ID])
+
+ALTER TABLE [dbo].[tblJOBPrintTimesManagement] CHECK CONSTRAINT [FK_tblJOBPrintTimesManagement_tblNhanSu]
+
+ALTER TABLE [dbo].[tblJOBPrintTimesManagement]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBPrintTimesManagement_tblSysUser] FOREIGN KEY([IDUser])
+REFERENCES [dbo].[tblSysUser] ([ID])
+
+ALTER TABLE [dbo].[tblJOBPrintTimesManagement] CHECK CONSTRAINT [FK_tblJOBPrintTimesManagement_tblSysUser]
+
+ALTER TABLE [dbo].[tblJOBRouting]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBRouting_tblDMCountry] FOREIGN KEY([IDCountryLoading])
+REFERENCES [dbo].[tblDMCountry] ([ID])
+
+ALTER TABLE [dbo].[tblJOBRouting] CHECK CONSTRAINT [FK_tblJOBRouting_tblDMCountry]
+
+ALTER TABLE [dbo].[tblJOBRouting]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBRouting_tblDMCountry1] FOREIGN KEY([IDCountryDischarge])
+REFERENCES [dbo].[tblDMCountry] ([ID])
+
+ALTER TABLE [dbo].[tblJOBRouting] CHECK CONSTRAINT [FK_tblJOBRouting_tblDMCountry1]
+
+ALTER TABLE [dbo].[tblJOBRouting]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBRouting_tblDMDoor] FOREIGN KEY([IDDoorLoading])
+REFERENCES [dbo].[tblDMDoor] ([ID])
+
+ALTER TABLE [dbo].[tblJOBRouting] CHECK CONSTRAINT [FK_tblJOBRouting_tblDMDoor]
+
+ALTER TABLE [dbo].[tblJOBRouting]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBRouting_tblDMDoor1] FOREIGN KEY([IDDoorDischarge])
+REFERENCES [dbo].[tblDMDoor] ([ID])
+
+ALTER TABLE [dbo].[tblJOBRouting] CHECK CONSTRAINT [FK_tblJOBRouting_tblDMDoor1]
+
+ALTER TABLE [dbo].[tblJOBRouting]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBRouting_tblDMPort] FOREIGN KEY([IDPortLoading])
+REFERENCES [dbo].[tblDMPort] ([ID])
+
+ALTER TABLE [dbo].[tblJOBRouting] CHECK CONSTRAINT [FK_tblJOBRouting_tblDMPort]
+
+ALTER TABLE [dbo].[tblJOBRouting]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBRouting_tblDMPort1] FOREIGN KEY([IDPortDischarge])
+REFERENCES [dbo].[tblDMPort] ([ID])
+
+ALTER TABLE [dbo].[tblJOBRouting] CHECK CONSTRAINT [FK_tblJOBRouting_tblDMPort1]
+
+ALTER TABLE [dbo].[tblJOBRouting]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBRouting_tblJOB] FOREIGN KEY([IDJOB])
+REFERENCES [dbo].[tblJOB] ([ID])
+
+ALTER TABLE [dbo].[tblJOBRouting] CHECK CONSTRAINT [FK_tblJOBRouting_tblJOB]
+
+ALTER TABLE [dbo].[tblJOBService]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBDichVuCungCap_tblDMDichVuCungCap] FOREIGN KEY([IDService])
+REFERENCES [dbo].[tblDMService] ([ID])
+
+ALTER TABLE [dbo].[tblJOBService] CHECK CONSTRAINT [FK_tblJOBDichVuCungCap_tblDMDichVuCungCap]
+
+ALTER TABLE [dbo].[tblJOBService]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBDichVuCungCap_tblDMDonViCungCap] FOREIGN KEY([IDServiceSupplier])
+REFERENCES [dbo].[tblDMServiceSupplier] ([ID])
+
+ALTER TABLE [dbo].[tblJOBService] CHECK CONSTRAINT [FK_tblJOBDichVuCungCap_tblDMDonViCungCap]
+
+ALTER TABLE [dbo].[tblJOBService]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBDichVuCungCap_tblJOB] FOREIGN KEY([IDJOB])
+REFERENCES [dbo].[tblJOB] ([ID])
+
+ALTER TABLE [dbo].[tblJOBService] CHECK CONSTRAINT [FK_tblJOBDichVuCungCap_tblJOB]
+
+ALTER TABLE [dbo].[tblJOBService]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBService_tblDMContactList] FOREIGN KEY([IDContact])
+REFERENCES [dbo].[tblDMContactList] ([ID])
+
+ALTER TABLE [dbo].[tblJOBService] CHECK CONSTRAINT [FK_tblJOBService_tblDMContactList]
+
+ALTER TABLE [dbo].[tblJOBToDoList]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBToDoList_tblDMCurrency] FOREIGN KEY([IDCurrency])
+REFERENCES [dbo].[tblDMCurrency] ([ID])
+
+ALTER TABLE [dbo].[tblJOBToDoList] CHECK CONSTRAINT [FK_tblJOBToDoList_tblDMCurrency]
+
+ALTER TABLE [dbo].[tblJOBToDoList]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBToDoList_tblDMPhongBan] FOREIGN KEY([IDAssignPhongBan])
+REFERENCES [dbo].[tblDMPhongBan] ([ID])
+
+ALTER TABLE [dbo].[tblJOBToDoList] CHECK CONSTRAINT [FK_tblJOBToDoList_tblDMPhongBan]
+
+ALTER TABLE [dbo].[tblJOBToDoList]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBToDoList_tblDMToDo] FOREIGN KEY([IDDMToDo])
+REFERENCES [dbo].[tblDMToDo] ([ID])
+
+ALTER TABLE [dbo].[tblJOBToDoList] CHECK CONSTRAINT [FK_tblJOBToDoList_tblDMToDo]
+
+ALTER TABLE [dbo].[tblJOBToDoList]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBToDoList_tblJOB] FOREIGN KEY([IDJOB])
+REFERENCES [dbo].[tblJOB] ([ID])
+
+ALTER TABLE [dbo].[tblJOBToDoList] CHECK CONSTRAINT [FK_tblJOBToDoList_tblJOB]
+
+ALTER TABLE [dbo].[tblJOBToDoList]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBToDoList_tblJOBObject] FOREIGN KEY([IDObject])
+REFERENCES [dbo].[tblJOBObject] ([ID])
+
+ALTER TABLE [dbo].[tblJOBToDoList] CHECK CONSTRAINT [FK_tblJOBToDoList_tblJOBObject]
+
+ALTER TABLE [dbo].[tblJOBToDoList]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBToDoList_tblSysUser] FOREIGN KEY([IDWhoToDoStatusChange])
+REFERENCES [dbo].[tblSysUser] ([ID])
+
+ALTER TABLE [dbo].[tblJOBToDoList] CHECK CONSTRAINT [FK_tblJOBToDoList_tblSysUser]
+
+ALTER TABLE [dbo].[tblJOBToDoList]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBToDoList_tblSysUser1] FOREIGN KEY([IDAssignToDo])
+REFERENCES [dbo].[tblSysUser] ([ID])
+
+ALTER TABLE [dbo].[tblJOBToDoList] CHECK CONSTRAINT [FK_tblJOBToDoList_tblSysUser1]
+
+ALTER TABLE [dbo].[tblJOBToKhaiHaiQuan]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBToKhaiHaiQuan_tblDMAirLine] FOREIGN KEY([IDAirLine])
+REFERENCES [dbo].[tblDMAirLine] ([ID])
+
+ALTER TABLE [dbo].[tblJOBToKhaiHaiQuan] CHECK CONSTRAINT [FK_tblJOBToKhaiHaiQuan_tblDMAirLine]
+
+ALTER TABLE [dbo].[tblJOBToKhaiHaiQuan]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBToKhaiHaiQuan_tblDMCarrier] FOREIGN KEY([IDHangTau])
+REFERENCES [dbo].[tblDMCarrier] ([ID])
+
+ALTER TABLE [dbo].[tblJOBToKhaiHaiQuan] CHECK CONSTRAINT [FK_tblJOBToKhaiHaiQuan_tblDMCarrier]
+
+ALTER TABLE [dbo].[tblJOBToKhaiHaiQuan]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBToKhaiHaiQuan_tblJOB] FOREIGN KEY([IDJOB])
+REFERENCES [dbo].[tblJOB] ([ID])
+
+ALTER TABLE [dbo].[tblJOBToKhaiHaiQuan] CHECK CONSTRAINT [FK_tblJOBToKhaiHaiQuan_tblJOB]
+
+ALTER TABLE [dbo].[tblJOBUserAccess]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBUserAccess_tblJOB] FOREIGN KEY([IDJOB])
+REFERENCES [dbo].[tblJOB] ([ID])
+
+ALTER TABLE [dbo].[tblJOBUserAccess] CHECK CONSTRAINT [FK_tblJOBUserAccess_tblJOB]
+
+ALTER TABLE [dbo].[tblJOBUserAccess]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBUserAccess_tblSysUser] FOREIGN KEY([IDUser])
+REFERENCES [dbo].[tblSysUser] ([ID])
+
+ALTER TABLE [dbo].[tblJOBUserAccess] CHECK CONSTRAINT [FK_tblJOBUserAccess_tblSysUser]
+
+ALTER TABLE [dbo].[tblJOBUserAccess]  WITH CHECK ADD  CONSTRAINT [FK_tblJOBUserAccess_tblSysUserGroup] FOREIGN KEY([IDUserGroup])
+REFERENCES [dbo].[tblSysUserGroup] ([ID])
+
+ALTER TABLE [dbo].[tblJOBUserAccess] CHECK CONSTRAINT [FK_tblJOBUserAccess_tblSysUserGroup]
+
+ALTER TABLE [dbo].[tblNhanSu]  WITH CHECK ADD  CONSTRAINT [FK_tblNhanSu_tblDMChucVu] FOREIGN KEY([IDChucVu])
+REFERENCES [dbo].[tblDMChucVu] ([ID])
+
+ALTER TABLE [dbo].[tblNhanSu] CHECK CONSTRAINT [FK_tblNhanSu_tblDMChucVu]
+
+ALTER TABLE [dbo].[tblNhanSu]  WITH CHECK ADD  CONSTRAINT [FK_tblNhanSu_tblDMPhongBan] FOREIGN KEY([IDPhongBan])
+REFERENCES [dbo].[tblDMPhongBan] ([ID])
+
+ALTER TABLE [dbo].[tblNhanSu] CHECK CONSTRAINT [FK_tblNhanSu_tblDMPhongBan]
+
+ALTER TABLE [dbo].[tblNhanSu]  WITH CHECK ADD  CONSTRAINT [FK_tblNhanSu_tblDMVanPhong] FOREIGN KEY([IDVanPhong])
+REFERENCES [dbo].[tblDMVanPhong] ([ID])
+
+ALTER TABLE [dbo].[tblNhanSu] CHECK CONSTRAINT [FK_tblNhanSu_tblDMVanPhong]
+
+ALTER TABLE [dbo].[tblNoiDong]  WITH CHECK ADD  CONSTRAINT [FK_tblNoiDongTraHang_tblJOBHangHoaTruck] FOREIGN KEY([IDHangHoa])
+REFERENCES [dbo].[tblJOBHangHoaTruck] ([ID])
+
+ALTER TABLE [dbo].[tblNoiDong] CHECK CONSTRAINT [FK_tblNoiDongTraHang_tblJOBHangHoaTruck]
+
+ALTER TABLE [dbo].[tblNoiTra]  WITH CHECK ADD  CONSTRAINT [FK_tblNoiTra_tblJOBHangHoaTruck] FOREIGN KEY([IDHangHoa])
+REFERENCES [dbo].[tblJOBHangHoaTruck] ([ID])
+
+ALTER TABLE [dbo].[tblNoiTra] CHECK CONSTRAINT [FK_tblNoiTra_tblJOBHangHoaTruck]
+
+ALTER TABLE [dbo].[tblQuickQuotationCharge]  WITH CHECK ADD  CONSTRAINT [FK_tblQuickQuotationCharge_tblQuickQuotation] FOREIGN KEY([IDQuickQuotation])
+REFERENCES [dbo].[tblQuotationList] ([ID])
+
+ALTER TABLE [dbo].[tblQuickQuotationCharge] CHECK CONSTRAINT [FK_tblQuickQuotationCharge_tblQuickQuotation]
+
+ALTER TABLE [dbo].[tblQuickQuotationCharge]  WITH CHECK ADD  CONSTRAINT [FK_tblQuickQuotationCharge_tblQuotationList] FOREIGN KEY([IDQuickQuotation])
+REFERENCES [dbo].[tblQuotationList] ([ID])
+
+ALTER TABLE [dbo].[tblQuickQuotationCharge] CHECK CONSTRAINT [FK_tblQuickQuotationCharge_tblQuotationList]
+
+ALTER TABLE [dbo].[tblQuotationList]  WITH CHECK ADD  CONSTRAINT [FK_tblQuickQuotation_tblDMCurrency] FOREIGN KEY([IDCurrency])
+REFERENCES [dbo].[tblDMCurrency] ([ID])
+
+ALTER TABLE [dbo].[tblQuotationList] CHECK CONSTRAINT [FK_tblQuickQuotation_tblDMCurrency]
+
+ALTER TABLE [dbo].[tblQuotationList]  WITH CHECK ADD  CONSTRAINT [FK_tblQuickQuotation_tblNhanSu] FOREIGN KEY([IDStaff])
+REFERENCES [dbo].[tblNhanSu] ([ID])
+
+ALTER TABLE [dbo].[tblQuotationList] CHECK CONSTRAINT [FK_tblQuickQuotation_tblNhanSu]
+
+ALTER TABLE [dbo].[tblQuotationList]  WITH CHECK ADD  CONSTRAINT [FK_tblQuotationList_tblDMCurrency] FOREIGN KEY([IDCurrency])
+REFERENCES [dbo].[tblDMCurrency] ([ID])
+
+ALTER TABLE [dbo].[tblQuotationList] CHECK CONSTRAINT [FK_tblQuotationList_tblDMCurrency]
+
+ALTER TABLE [dbo].[tblQuotationList]  WITH CHECK ADD  CONSTRAINT [FK_tblQuotationList_tblNhanSu] FOREIGN KEY([IDStaff])
+REFERENCES [dbo].[tblNhanSu] ([ID])
+
+ALTER TABLE [dbo].[tblQuotationList] CHECK CONSTRAINT [FK_tblQuotationList_tblNhanSu]
+
+ALTER TABLE [dbo].[tblSysFCMToken]  WITH CHECK ADD  CONSTRAINT [FK_tblSysFCMToken_tblNhanSu] FOREIGN KEY([UserID])
+REFERENCES [dbo].[tblNhanSu] ([ID])
+
+ALTER TABLE [dbo].[tblSysFCMToken] CHECK CONSTRAINT [FK_tblSysFCMToken_tblNhanSu]
+
+ALTER TABLE [dbo].[tblSysUser]  WITH CHECK ADD  CONSTRAINT [FK_tblSysUser_tblNhanSu] FOREIGN KEY([IDNhanVien])
+REFERENCES [dbo].[tblNhanSu] ([ID])
+
+ALTER TABLE [dbo].[tblSysUser] CHECK CONSTRAINT [FK_tblSysUser_tblNhanSu]
+
+ALTER TABLE [dbo].[tblSysUser]  WITH CHECK ADD  CONSTRAINT [FK_tblSysUser_tblSysUserGroup] FOREIGN KEY([IDGroupUser])
+REFERENCES [dbo].[tblSysUserGroup] ([ID])
+
+ALTER TABLE [dbo].[tblSysUser] CHECK CONSTRAINT [FK_tblSysUser_tblSysUserGroup]
+
+ALTER TABLE [dbo].[tblSysUserRelationGroup]  WITH CHECK ADD  CONSTRAINT [FK_tblSysUserRelationGroup_tblSysUser] FOREIGN KEY([IDUser])
+REFERENCES [dbo].[tblSysUser] ([ID])
+
+ALTER TABLE [dbo].[tblSysUserRelationGroup] CHECK CONSTRAINT [FK_tblSysUserRelationGroup_tblSysUser]
+
+ALTER TABLE [dbo].[tblSysUserRelationGroup]  WITH CHECK ADD  CONSTRAINT [FK_tblSysUserRelationGroup_tblSysUserGroup] FOREIGN KEY([IDGroup])
+REFERENCES [dbo].[tblSysUserGroup] ([ID])
+
+ALTER TABLE [dbo].[tblSysUserRelationGroup] CHECK CONSTRAINT [FK_tblSysUserRelationGroup_tblSysUserGroup]
+
+ALTER TABLE [dbo].[tblTheoDoiTrangThaiVanChuyen]  WITH CHECK ADD  CONSTRAINT [FK_tblTheoDoiTrangThaiVanChuyen_tblChuyenVanChuyen] FOREIGN KEY([IDChuyenVanChuyen])
+REFERENCES [dbo].[tblChuyenVanChuyen] ([ID])
+
+ALTER TABLE [dbo].[tblTheoDoiTrangThaiVanChuyen] CHECK CONSTRAINT [FK_tblTheoDoiTrangThaiVanChuyen_tblChuyenVanChuyen]
+
+ALTER TABLE [dbo].[tblTheoDoiTrangThaiVanChuyen]  WITH CHECK ADD  CONSTRAINT [FK_tblTheoDoiTrangThaiVanChuyen_tblDMTrangThaiVanChuyenTrans] FOREIGN KEY([IDDMTrangThaiVanChuyen])
+REFERENCES [dbo].[tblDMTrangThaiVanChuyenTrans] ([ID])
+
+ALTER TABLE [dbo].[tblTheoDoiTrangThaiVanChuyen] CHECK CONSTRAINT [FK_tblTheoDoiTrangThaiVanChuyen_tblDMTrangThaiVanChuyenTrans]
+
+ALTER TABLE [dbo].[tblTheoDoiTrangThaiVanChuyen]  WITH CHECK ADD  CONSTRAINT [FK_tblTheoDoiTrangThaiVanChuyen_tblSysUser] FOREIGN KEY([IDNhanVienGui])
+REFERENCES [dbo].[tblSysUser] ([ID])
+
+ALTER TABLE [dbo].[tblTheoDoiTrangThaiVanChuyen] CHECK CONSTRAINT [FK_tblTheoDoiTrangThaiVanChuyen_tblSysUser]
+
+ALTER TABLE [dbo].[tblThongTinDieuPhoiXe]  WITH CHECK ADD  CONSTRAINT [FK_tblThongTinDieuPhoiXe_tblDMLocalTransporterAgent] FOREIGN KEY([IDLocalTransport])
+REFERENCES [dbo].[tblDMLocalTransporterAgent] ([ID])
+
+ALTER TABLE [dbo].[tblThongTinDieuPhoiXe] CHECK CONSTRAINT [FK_tblThongTinDieuPhoiXe_tblDMLocalTransporterAgent]
+
+ALTER TABLE [dbo].[tblThongTinDieuPhoiXe]  WITH CHECK ADD  CONSTRAINT [FK_tblThongTinDieuPhoiXe_tblDMMooc] FOREIGN KEY([IDMooc])
+REFERENCES [dbo].[tblDMMooc] ([ID])
+
+ALTER TABLE [dbo].[tblThongTinDieuPhoiXe] CHECK CONSTRAINT [FK_tblThongTinDieuPhoiXe_tblDMMooc]
+
+ALTER TABLE [dbo].[tblThongTinDieuPhoiXe]  WITH CHECK ADD  CONSTRAINT [FK_tblThongTinDieuPhoiXe_tblDMTaiXe] FOREIGN KEY([IDTaiXe])
+REFERENCES [dbo].[tblDMTaiXe] ([ID])
+
+ALTER TABLE [dbo].[tblThongTinDieuPhoiXe] CHECK CONSTRAINT [FK_tblThongTinDieuPhoiXe_tblDMTaiXe]
+
+ALTER TABLE [dbo].[tblThongTinDieuPhoiXe]  WITH CHECK ADD  CONSTRAINT [FK_tblThongTinDieuPhoiXe_tblDMTrangThaiVanChuyenTrans] FOREIGN KEY([IDDMTrangThaiVanChuyen])
+REFERENCES [dbo].[tblDMTrangThaiVanChuyenTrans] ([ID])
+
+ALTER TABLE [dbo].[tblThongTinDieuPhoiXe] CHECK CONSTRAINT [FK_tblThongTinDieuPhoiXe_tblDMTrangThaiVanChuyenTrans]
+
+ALTER TABLE [dbo].[tblThongTinDieuPhoiXe]  WITH CHECK ADD  CONSTRAINT [FK_tblThongTinDieuPhoiXe_tblDMXeOto] FOREIGN KEY([IDXeVanChuyen])
+REFERENCES [dbo].[tblDMXeOto] ([ID])
+
+ALTER TABLE [dbo].[tblThongTinDieuPhoiXe] CHECK CONSTRAINT [FK_tblThongTinDieuPhoiXe_tblDMXeOto]
+
+ALTER TABLE [dbo].[tblThongTinDieuPhoiXe]  WITH CHECK ADD  CONSTRAINT [FK_tblThongTinDieuPhoiXe_tblJOB] FOREIGN KEY([IDJOB])
+REFERENCES [dbo].[tblJOB] ([ID])
+
+ALTER TABLE [dbo].[tblThongTinDieuPhoiXe] CHECK CONSTRAINT [FK_tblThongTinDieuPhoiXe_tblJOB]
+
+ALTER TABLE [dbo].[tblThongTinDieuPhoiXe]  WITH CHECK ADD  CONSTRAINT [FK_tblThongTinDieuPhoiXe_tblNhanSu] FOREIGN KEY([IDTaiXeCompany])
+REFERENCES [dbo].[tblNhanSu] ([ID])
+
+ALTER TABLE [dbo].[tblThongTinDieuPhoiXe] CHECK CONSTRAINT [FK_tblThongTinDieuPhoiXe_tblNhanSu]
+
+ALTER TABLE [dbo].[tblThongTinDieuPhoiXe]  WITH CHECK ADD  CONSTRAINT [FK_tblThongTinDieuPhoiXe_tblSysUser] FOREIGN KEY([IDUser])
+REFERENCES [dbo].[tblSysUser] ([ID])
+
+ALTER TABLE [dbo].[tblThongTinDieuPhoiXe] CHECK CONSTRAINT [FK_tblThongTinDieuPhoiXe_tblSysUser]
+
+ALTER TABLE [dbo].[tblToKhaiChinh]  WITH CHECK ADD  CONSTRAINT [FK_tblToKhaiChinh_tblDMLoaiHinhTrans] FOREIGN KEY([IDLoaiHinh])
+REFERENCES [dbo].[tblDMLoaiHinhTrans] ([ID])
+
+ALTER TABLE [dbo].[tblToKhaiChinh] CHECK CONSTRAINT [FK_tblToKhaiChinh_tblDMLoaiHinhTrans]
+
+ALTER TABLE [dbo].[tblToKhaiChinh]  WITH CHECK ADD  CONSTRAINT [FK_tblToKhaiChinh_tblJOBToKhaiHaiQuan] FOREIGN KEY([IDToKhaiHaiQuan])
+REFERENCES [dbo].[tblJOBToKhaiHaiQuan] ([ID])
+
+ALTER TABLE [dbo].[tblToKhaiChinh] CHECK CONSTRAINT [FK_tblToKhaiChinh_tblJOBToKhaiHaiQuan]
+
+ALTER TABLE [dbo].[tblToKhaiNhanh]  WITH CHECK ADD  CONSTRAINT [FK_tblToKhaiNhanh_tblDMLoaiHinhTrans] FOREIGN KEY([IDLoaiHinh])
+REFERENCES [dbo].[tblDMLoaiHinhTrans] ([ID])
+
+ALTER TABLE [dbo].[tblToKhaiNhanh] CHECK CONSTRAINT [FK_tblToKhaiNhanh_tblDMLoaiHinhTrans]
+
+ALTER TABLE [dbo].[tblToKhaiNhanh]  WITH CHECK ADD  CONSTRAINT [FK_tblToKhaiNhanh_tblToKhaiChinh] FOREIGN KEY([IDToKhaiChinh])
+REFERENCES [dbo].[tblToKhaiChinh] ([ID])
+
+ALTER TABLE [dbo].[tblToKhaiNhanh] CHECK CONSTRAINT [FK_tblToKhaiNhanh_tblToKhaiChinh]
